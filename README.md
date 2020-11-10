@@ -86,13 +86,14 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 
 - Pulling Data from API - Launch Dates, times, types, and extra description
 - CSS responsive design - primarily for mobile, but looks decent on desktop as well.
-- Ability to save launches using local storage, so that you can save the ones you're watching
 - Ability to display more information about a specific launch, and also link to even more information
 - displays a photo of the spacecraft being used behind each launch countdown using spacecraft endpoint of API
-- Ability to remove launch countdowns and old sections disappear when launch is complete
+
 
 #### PostMVP  
 
+- Ability to save launches using local storage, so that you can save the ones you're watching
+- Ability to remove launch countdowns and old sections disappear when launch is complete
 - incorporating past launch search
 - incorporating other parts of the launch library api like astronaut look up, space events, dockings, etc.
 - look into geolocation and showing what space objects are overhead right now
