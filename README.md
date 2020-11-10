@@ -68,7 +68,7 @@ Launch Library - https://ll.thespacedevs.com/2.0.0/swagger
 
 ## Wireframes
 
-![homepage](/assets/Homepagev2.png "Homepage")
+![homepage](/Homepagev2.png "Homepage")
 
 ## MVP/PostMVP 
 
@@ -100,7 +100,7 @@ Launch Library - https://ll.thespacedevs.com/2.0.0/swagger
 
 ## Priority Matrix
 
-![matrix](/assets/priority-matrix.png "priority matrix")
+![matrix](/priority-matrix.png "priority matrix")
 
 ## Timeframes
 
