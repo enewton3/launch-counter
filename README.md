@@ -78,6 +78,7 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 ## Wireframes
 
 ![homepage](/Homepagev2.png "Homepage")
+![homepagebig](/desktopversion.png "Homepage big")
 
 ## MVP/PostMVP 
 
