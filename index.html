@@ -12,18 +12,23 @@
 <body>
   <main>
     <section class='counter-container'>
+      <!-- <div class='counter'></div>
       <div class='counter'></div>
-      <div class='counter'></div>
-      <div class='counter'></div>
+      <div class='counter'></div> -->
     </section>
     <section class='search-container'>
       <div id='search'>
         <form>
           <label for='search-bar'>Search</label>
           <input type="text" id='search-bar' placeholder="Search Upcoming Launches">
+          <label for='submit'>Submit</label>
+          <input type="submit" id='submit' placeholder="Search">
         </form>
       </div>
-      <div class='settings-div'></div>
+      <div class='settings-div'>
+        <button id='save'>Save Selected Launches</button>
+        <button id='next'>Display Next 5 launches</button>
+      </div>
       <div class='site-info'>
         <p>Site info goes here</p>
         <p>Copyright info goes here</p>
