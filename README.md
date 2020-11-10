@@ -97,6 +97,7 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 - incorporating past launch search
 - incorporating other parts of the launch library api like astronaut look up, space events, dockings, etc.
 - look into geolocation and showing what space objects are overhead right now
+- body background is APOD
 
 ## Project Schedule
 
