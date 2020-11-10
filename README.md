@@ -12,9 +12,13 @@ Extra functionality would include - past launch lookup and using other data from
 ## API and Data Sample
 
 Launch Library - https://ll.thespacedevs.com/2.0.0/swagger
+
 Specific API endpoints and other JS functions needed
+
 Date()
+
 window.localstorage
+
 https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 
 
