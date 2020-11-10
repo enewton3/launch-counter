@@ -77,8 +77,8 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 
 ## Wireframes
 
-![homepage](/Homepagev2.png "Homepage")
-![homepagebig](/desktopversion.png "Homepage big")
+![homepage](/assets/Homepagev2.png "Homepage")
+![homepagebig](/assets/desktopversion.png "Homepage big")
 
 ## MVP/PostMVP 
 
@@ -111,7 +111,7 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 
 ## Priority Matrix
 
-![matrix](/priority-matrix.png "priority matrix")
+![matrix](/assets/priority-matrix.png "priority matrix")
 
 ## Timeframes
 
