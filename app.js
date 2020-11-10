@@ -37,7 +37,7 @@ async function get5launches() {
   }
 }
 
-get5launches()
+// get5launches()
 
 //Create and display counters
 

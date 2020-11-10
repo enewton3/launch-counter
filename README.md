@@ -125,12 +125,12 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 | Psuedocode | M | 1hr | .5hrs | 0hrs |
 | Search functionality - user input (Does this list next 5 launches by default?) | M | 3hrs | 0hrs | 0hrs |
 | Search DOM manipulation | H | 4hrs| 0hrs | 0hrs |
-| JS Pull Data Functions | H | 4hrs| 0hrs | 0hrs |
+| JS Pull Data Functions | H | 4hrs| 1.5hrs | 0hrs |
 | Countdown JS functions | H | 2hrs| 0hrs | 0hrs |
 | DOM Manipulating JS | H | 3hrs| 0hrs | 0hrs |
 | Photos into styling| L | 1hr | .25hrs | 0 hrs|
 | Section Removal | H | 3hrs| 0hrs | 0hrs |
-| Fussing with API | M | 4hrs| 0hrs | 0hrs |
+| Fussing with API | M | 4hrs| 1hrs | 0hrs |
 | Local Storage keeps selected items| M | 3hrs| 0hrs | 0hrs |
 | Incorporate Past Launches into searches | L | 3hrs | 0hrs | 0hrs|
 | Total | H | 39hrs| 0hrs | 0hrs |
