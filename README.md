@@ -73,27 +73,21 @@ Launch Library - https://ll.thespacedevs.com/2.0.0/swagger
 ## MVP/PostMVP 
 
 #### MVP 
-*These are examples only. Replace with your own MVP features.*
 
-- Pulling Data from API
-- Full CSS responsive design - primarily for mobile, but looks decent on desktop as well.
+- Pulling Data from API - Launch Dates, times, types, and extra description
+- CSS responsive design - primarily for mobile, but looks decent on desktop as well.
 - Ability to save launches using local storage, so that you can save the ones you're watching
 - Ability to display more information about a specific launch, and also link to even more information
 - displays a photo of the spacecraft being used behind each launch countdown using spacecraft endpoint of API
 - Ability to remove launch countdowns and old sections disappear when launch is complete
 
 #### PostMVP  
-*These are examples only. Replace with your own Post-MVP features.*
 
-- incorporating past launches
+- incorporating past launch search
 - incorporating other parts of the launch library api like astronaut look up, space events, dockings, etc.
 - look into geolocation and showing what space objects are overhead right now
 
 ## Project Schedule
-
-This schedule will be used to keep track of your progress throughout the week and align with our expectations.  
-
-You are **responsible** for scheduling time with your squad to seek approval for each deliverable by the end of the corresponding day, excluding `Saturday` and `Sunday`.
 
 |  Day | Deliverable | Status
 |---|---| ---|
@@ -101,7 +95,7 @@ You are **responsible** for scheduling time with your squad to seek approval for
 |Nov 10| Project Approval and Initial Design - Basic HTML and CSS | Incomplete
 |Nov 12| Begin JS - Pull data functions  | Incomplete
 |Nov 13| More JS - take user input and populate data, create countdowns | Incomplete
-|Nov 16| Finishing touches and PMVPs | Incomplete
+|Nov 16| Finishing touches, Probably CSS fixing, and PMVPs | Incomplete
 |Nov 17| Presentations | Incomplete
 
 ## Priority Matrix
@@ -116,9 +110,16 @@ Time frames are also key in the development cycle.  You have limited time to cod
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Adding Form | H | 3hrs| 3.5hrs | 3.5hrs |
-| Working with API | H | 3hrs| 2.5hrs | 2.5hrs |
-| Total | H | 6hrs| 5hrs | 5hrs |
+| Pitch, Wireframes, Priority Matrix| H | 2hrs | 2hrs | 2hrs| 
+| HTML | H | 2hrs| 0hrs | 0hrs |
+| CSS Styling | H | 3hrs| 0hrs | 0hrs |
+| Make CSS responsive | H | 2hrs| 0hrs | 0hrs |
+| Search functionality - user input | M | 3hrs | 0hrs | 0hrs |
+| JS Pull Data Functions | H | 4hrs| 0hrs | 0hrs |
+| DOM Manipulating JS | H | 3hrs| 0hrs | 0hrs |
+| Section Removal | H | 3hrs| 0hrs | 0hrs |
+| Fussing with API | H | 2hrs| 0hrs | 0hrs |
+| Total | H | 24hrs| 0hrs | 0hrs |
 
 ## Code Snippet
 
