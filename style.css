@@ -1,5 +1,10 @@
 body {
-  background-color: purple;
+  /* background-image: url('https://static01.nyt.com/images/2020/02/04/science/30SCI-SPITZER1c/30SCI-SPITZER1c-mobileMasterAt3x-v2.jpg'); */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  /* background-position: center; */
+  background-color: grey;
+  font-family: 'Montserrat', sans-serif, Arial, Helvetica
 }
 
 label {
@@ -33,6 +38,9 @@ label {
 
 .counter {
   border: 2px solid black;
+  background-image: url('');
+  background-color: grey;
+  border-radius: 10px;
   width: 98vw;
   height: 15vh;
   margin: 10px 0 10px 0;
@@ -50,6 +58,7 @@ label {
   border: 2px solid black;
   position: absolute;
   bottom: 2px;
+  left: 5px;
   width: 75vw;
   height: 65%;
 }
