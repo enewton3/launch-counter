@@ -104,22 +104,23 @@ Launch Library - https://ll.thespacedevs.com/2.0.0/swagger
 
 ## Timeframes
 
-Tell us how long you anticipate spending on each area of development. Be sure to consider how many hours a day you plan to be coding and how many days you have available until presentation day. Students usally put in around 40+ hours into their project 1.
-
-Time frames are also key in the development cycle.  You have limited time to code all phases of the game.  Your estimates can then be used to evalute game possibilities based on time needed and the actual time you have before game must be submitted. It's always best to pad the time by a few hours so that you account for the unknown so add and additional hour or two to each component to play it safe. Throughout your project, keep track of your Time Invested and Actual Time and update your README regularly.
-
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | Pitch, Wireframes, Priority Matrix| H | 2hrs | 2hrs | 2hrs| 
 | HTML | H | 2hrs| 0hrs | 0hrs |
 | CSS Styling | H | 3hrs| 0hrs | 0hrs |
-| Make CSS responsive | H | 2hrs| 0hrs | 0hrs |
-| Search functionality - user input | M | 3hrs | 0hrs | 0hrs |
+| Make CSS responsive | H | 3hrs| 0hrs | 0hrs |
+| Search functionality - user input (Does this list next 5 launches by default?) | M | 3hrs | 0hrs | 0hrs |
+| Search DOM manipulation | H | 4hrs| 0hrs | 0hrs |
 | JS Pull Data Functions | H | 4hrs| 0hrs | 0hrs |
+| Countdown JS functions | H | 2hrs| 0hrs | 0hrs |
 | DOM Manipulating JS | H | 3hrs| 0hrs | 0hrs |
+| Photos into styling| L | 1hr | 0hrs | 0 hrs|
 | Section Removal | H | 3hrs| 0hrs | 0hrs |
-| Fussing with API | H | 2hrs| 0hrs | 0hrs |
-| Total | H | 24hrs| 0hrs | 0hrs |
+| Fussing with API | M | 4hrs| 0hrs | 0hrs |
+| Local Storage keeps selected items| M | 3hrs| 0hrs | 0hrs |
+| Incorporate Past Launches into searches | L | 3hrs | 0hrs | 0hrs|
+| Total | H | 39hrs| 0hrs | 0hrs |
 
 ## Code Snippet
 
