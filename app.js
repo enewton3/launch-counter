@@ -4,12 +4,8 @@ let upcomingLaunchesURL = 'https://ll.thespacedevs.com/2.0.0/launch/upcoming/ '
 let searchQuery = ' '
 let searchUpcoming = `https://ll.thespacedevs.com/2.0.0/launch/upcoming?search=${searchQuery}`
 const access_token = config.access_token
-let search1 = {
-
-}
-let search2 = {
-
-}
+const searchBar = document.querySelector('#search-bar')
+const 
 
 const headers = {
   headers: {
@@ -40,5 +36,11 @@ async function get5launches() {
 // get5launches()
 
 //Create and display counters
+//search display function
+  //when the search bar is clicked to search for something, a window pops up on the bottom of the screen displaying the search results
+
+searchBar.addEventListener('click', () => {
+  
+})
 
   //save counters into local storage

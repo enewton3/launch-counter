@@ -63,6 +63,15 @@ label {
   width: 75vw;
   height: 65%;
 }
+.search-results {
+  /* display: none;
+  animation thing for when it pops up
+  displays over other stuff at the bottom */
+}
+
+.show {
+  display: absolute;
+}
 
 #search-bar {
   width: 66vw;
@@ -72,3 +81,4 @@ label {
 #submit {
   margin: 5px;
 }
+
