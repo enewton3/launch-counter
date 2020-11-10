@@ -3,7 +3,7 @@ console.log('Hello World')
 let upcomingLaunchesURL = 'https://ll.thespacedevs.com/2.0.0/launch/upcoming/ '
 let searchQuery = ' '
 let searchUpcoming = `https://ll.thespacedevs.com/2.0.0/launch/upcoming?search=${searchQuery}`
-const access_token = 'ae2ac201854a8c44c47074cbdcd2d344cf182cab'
+const access_token = config.access_token
 let search1 = {
 
 }
