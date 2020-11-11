@@ -63,13 +63,16 @@ label {
   width: 75vw;
   height: 65%;
 }
-.search-results {
+/* .search-results {
   /* display: none;
   animation thing for when it pops up
   displays over other stuff at the bottom */
+/* } */
+.details-hidden {
+  display: none;
 }
 
-.show {
+.details-show {
   display: absolute;
 }
 
