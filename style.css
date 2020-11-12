@@ -1,8 +1,4 @@
 body {
-  /* background-image: url('https://static01.nyt.com/images/2020/02/04/science/30SCI-SPITZER1c/30SCI-SPITZER1c-mobileMasterAt3x-v2.jpg'); */
-  /* background-repeat: no-repeat; */
-  /* background-size: cover; */
-  /* background-position: center; */
   background-color: grey;
   font-family: 'Montserrat', sans-serif, Arial, Helvetica
 }
@@ -12,7 +8,11 @@ label {
 }
 
 .counter-container {
-  border: 2px solid black;
+  background-image: url('https://static01.nyt.com/images/2020/02/04/science/30SCI-SPITZER1c/30SCI-SPITZER1c-mobileMasterAt3x-v2.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  /* border: 2px solid black; */
   width: 100vw;
   height: 84vh;
   margin: 0;
@@ -50,7 +50,7 @@ label {
   width: 98vw;
   height: 12vh;
   margin: 10px 0 10px 0;
-  
+  transition: all .3s ease;
 }
 
 .countdown
@@ -74,6 +74,7 @@ label {
   grid-template-areas: 
     "countdown countdown name name name"
     "date time type type dropdown";
+  transition: all .3s ease;
 }
 .countdown {
   grid-area: countdown;
@@ -104,14 +105,14 @@ label {
   justify-self: end;
   width: 40px;
   height: 40px;
-  /* margin: 10px 10px 10px 10px; */
+  margin: 0 10px 0 0;
   /* padding: 0 0 10px 0; */
 }
 
 .details {
   display: none;
   text-align: center;
-
+  grid
 }
 
 /* THESE ARE THE STYLINGS FOR EVERYTHING IN THE INFO BAR ON THE BOTTOM */

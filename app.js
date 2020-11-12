@@ -77,7 +77,6 @@ function showDetails(itemID) {
     targetDiv.style.height = '30vh'
     details.style.display = 'block'
   }
-  // look into making it a smooth transition
 }
 
 //Create and display counters
