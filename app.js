@@ -17,6 +17,7 @@ class launch {
     this.url = url
     this.details = details
     this.time = time
+    this.date = this.time 
   }
 }
 
@@ -49,22 +50,23 @@ async function get5launches() {
   }
 }
 
-get5launches()
+// get5launches()
 
 function displayLaunches(arr) {
   arr.forEach((item) => {
     let counterDiv = document.createElement('div')
     counterDiv.className = 'counter'
-    counterDiv.backgroundImage = `url(${item.image})`
-    counterDiv.innerHTML = `<h2 class='countdown'>COUNTER GOES HERE</h2><h3>${item.name}</h3><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details-hidden'>${item.details}</p><a class='more-details' href='${item.url}'>Click here for more details</a>`
+    counterDiv.style.backgroundImage = `url('${item.image}')`
+    counterDiv.innerHTML = `<h2 class='countdown'>COUNTER GOES HERE</h2><h3 class='name'>${item.name}</h3><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details-hidden'>${item.details}<a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'> `
     counterContainer.append(counterDiv)
-    
   })
 }
 
-function displayDetails(event) {
+function showDetails(event) {
   event.preventDefault()
-  
+  //expands launch div height
+  //toggles details class to show
+  //look into making it a smooth transition
 }
 
 //Create and display counters

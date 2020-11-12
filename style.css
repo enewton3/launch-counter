@@ -36,18 +36,77 @@ label {
   flex-flow: column wrap;
 }
 
+/* THESE ARE THE STYLINGS FOR ALL THE COUNTER DIVs */
 .counter {
   border: 2px solid black;
-  background-image: url('');
+  background-image: url('https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2019/06/europe_s_rockets/19421217-6-eng-GB/Europe_s_rockets_pillars.jpg');
+  background-origin: content-box;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   background-color: grey;
   border-radius: 10px;
   width: 98vw;
-  height: 15vh;
+  height: 12vh;
   margin: 10px 0 10px 0;
-  display: flex;
+  display: grid;
+  grid-template-columns:  repeat(5, auto);
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 10px;
+  grid-template-areas: 
+    "countdown countdown name name name"
+    "date time type type dropdown";
+  /* display: flex;
   flex-flow: row wrap;
+  justify-content: space-around;
+  align-content: center;
+  text-align: center; */
+}
+.countdown {
+  grid-area: countdown;
+  margin: 20px 10px 10px 10px;
+  text-shadow: 1px 2px black;
+}
+.name {
+  grid-area: name;
+  justify-self: end;
+  text-align: right;
+  margin: 20px 10px 10px 10px;
+}
+.time {
+  grid-area: time;
+  margin: 10px 10px 20px 10px;
+}
+.type{
+  grid-area: type;
+  margin: 10px 10px 20px 10px;
+}
+.date {
+  grid-area: date;
+  margin: 10px 10px 20px 10px;
+}
+.dropdown-img {
+  grid-area: dropdown;
+  justify-self: end;
+  width: 40px;
+  height: 40px;
+  margin: 10px 10px 10px 10px;
+  padding: 0 0 10px 0;
 }
 
+.more-details {
+  grid-area: details;
+}
+
+.details-hidden {
+  display: none;
+}
+
+.details-show {
+  display: absolute;
+}
+
+/* THESE ARE THE STYLINGS FOR EVERYTHING IN THE INFO BAR ON THE BOTTOM */
 .settings-div {
   border: 2px solid black;
   width: 25vw;
@@ -70,13 +129,7 @@ label {
   animation thing for when it pops up
   displays over other stuff at the bottom */
 /* } */
-.details-hidden {
-  display: none;
-}
 
-.details-show {
-  display: absolute;
-}
 
 #search-bar {
   width: 66vw;

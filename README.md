@@ -84,7 +84,7 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 
 #### MVP 
 
-- Pulling Data from API - Launch Dates, times, types, and extra description
+- Pulling Data from API - Launch Dates, times, types, and extra description ----tick----
 - CSS responsive design - primarily for mobile, but looks decent on desktop as well.
 - Ability to display more information about a specific launch, and also link to even more information
 - displays a photo of the spacecraft being used behind each launch countdown using spacecraft endpoint of API
@@ -103,8 +103,8 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 
 |  Day | Deliverable | Status
 |---|---| ---|
-|Nov 9| Prompt / Wireframes / Priority Matrix / Timeframes | Incomplete
-|Nov 10| Project Approval and Initial Design - Basic HTML and CSS | Incomplete
+|Nov 9| Prompt / Wireframes / Priority Matrix / Timeframes | Complete
+|Nov 10| Project Approval and Initial Design - Basic HTML and CSS | Complete
 |Nov 12| Begin JS - Pull data functions  | Incomplete
 |Nov 13| More JS - take user input and populate data, create countdowns | Incomplete
 |Nov 16| Finishing touches, Probably CSS fixing, and PMVPs | Incomplete
@@ -125,7 +125,7 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 | Psuedocode | M | 1hr | .5hrs | 0hrs |
 | Search functionality - user input (Does this list next 5 launches by default?) | M | 3hrs | 0hrs | 0hrs |
 | Search DOM manipulation | H | 4hrs| 0hrs | 0hrs |
-| JS Pull Data Functions | H | 4hrs| 1.5hrs | 0hrs |
+| JS Pull Data Functions | H | 4hrs| 2.5hrs | 0hrs |
 | Countdown JS functions | H | 2hrs| 0hrs | 0hrs |
 | DOM Manipulating JS | H | 3hrs| 0hrs | 0hrs |
 | Photos into styling| L | 1hr | .25hrs | 0 hrs|
