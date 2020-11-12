@@ -56,7 +56,7 @@ function displayLaunches(arr) {
     let counterDiv = document.createElement('div')
     counterDiv.className = 'counter'
     counterDiv.backgroundImage = `url(${item.image})`
-    counterDiv.innerHTML = `<h2 class='countdown'>COUNTER GOES HERE</h2><h3>${item.name}</h3><p class='type'>${item.type}</p><p class='details-hidden'>${item.details}</p><a href='${item.url}'>Click here for more details</a>`
+    counterDiv.innerHTML = `<h2 class='countdown'>COUNTER GOES HERE</h2><h3>${item.name}</h3><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details-hidden'>${item.details}</p><a class='more-details' href='${item.url}'>Click here for more details</a>`
     counterContainer.append(counterDiv)
     
   })

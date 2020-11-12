@@ -44,6 +44,8 @@ label {
   width: 98vw;
   height: 15vh;
   margin: 10px 0 10px 0;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .settings-div {
