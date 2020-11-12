@@ -50,7 +50,7 @@ async function get5launches() {
   }
 }
 
-get5launches()
+// get5launches()
 
 function displayLaunches(arr) {
   arr.forEach((item) => {
@@ -59,22 +59,33 @@ function displayLaunches(arr) {
     counterDiv.style.backgroundImage = `url('${item.image}')`
     counterDiv.innerHTML = `<h2 class='countdown'>COUNTER GOES HERE</h2><h3 class='name'>${item.name}</h3><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'> `
     counterContainer.append(counterDiv)
-    counterDiv.addEventListener('click', (event) => showDetails(event))
+    let hamburger = document.querySelector('.dropdown-img')
+    hamburger.addEventListener('click', () => {
+      let details = counterDiv.querySelector('.details')
+      if (counterDiv.style.height === '30vh') {
+          counterDiv.style.height = '12vh'
+          details.style.display = 'none'
+      } else {
+          counterDiv.style.height = '30vh'
+          details.style.display = 'block'
+      }
+    })
   })
 }
 
-function showDetails(event) {
-  let eventTarget = event.target
-      let details = eventTarget.querySelector('.details')
-      if (eventTarget.style.height === '30vh') {
-        eventTarget.style.height = '12vh'
-        details.style.display = 'none'
-      } else {
-        eventTarget.style.height = '30vh'
-        details.style.display = 'block'
-      }
+// function showDetails(event) {
+//   let eventTarget = event.target
+//   let details = eventTarget.querySelector('.details')
+//   console.log(eventTarget)
+//   if (eventTarget.style.height === '30vh') {
+//     eventTarget.style.height = '12vh'
+//     details.style.display = 'none'
+//   } else {
+//     eventTarget.style.height = '30vh'
+//     details.style.display = 'block'
+//   }
   //look into making it a smooth transition
-}
+// }
 
 //Create and display counters
 //search display function

@@ -66,6 +66,16 @@ label {
 /* .counterTall {
   height: 20vh !important;
 } */
+.countdown
+.name
+.time
+.type
+.date
+.dropdown-img
+.details
+.more-details {
+  pointer-events: none;
+}
 
 .countdown {
   grid-area: countdown;
