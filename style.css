@@ -20,8 +20,9 @@ label {
   top: 0;
   left: 0;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   align-items: center;
+  overflow-y: scroll;
 }
 
 .search-container {
@@ -62,6 +63,10 @@ label {
   align-content: center;
   text-align: center; */
 }
+/* .counterTall {
+  height: 20vh !important;
+} */
+
 .countdown {
   grid-area: countdown;
   margin: 20px 10px 10px 10px;
@@ -80,6 +85,7 @@ label {
 .type{
   grid-area: type;
   margin: 10px 10px 20px 10px;
+  justify-self: center;
 }
 .date {
   grid-area: date;
@@ -94,22 +100,14 @@ label {
   padding: 0 0 10px 0;
 }
 
-.more-details {
-  grid-area: details;
-}
-
-.details-hidden {
+.details {
   display: none;
-}
-
-.details-show {
-  display: absolute;
 }
 
 /* THESE ARE THE STYLINGS FOR EVERYTHING IN THE INFO BAR ON THE BOTTOM */
 .settings-div {
   border: 2px solid black;
-  width: 25vw;
+  width: 20vw;
   height: 100%;
   align-self: flex-end;
   order: 3;
@@ -124,6 +122,15 @@ label {
   width: 75vw;
   height: 65%;
 }
+
+.site-info > h1 {
+  margin: 5px 0 0 10px;
+}
+
+.copyright {
+  margin: 5px 0 0 10px;
+}
+ 
 /* .search-results {
   /* display: none;
   animation thing for when it pops up
