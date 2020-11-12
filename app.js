@@ -6,6 +6,7 @@ let searchUpcoming = `https://ll.thespacedevs.com/2.0.0/launch/upcoming?search=$
 const access_token = config.access_token
 const searchBar = document.querySelector('#search-bar')
 const counterContainer = document.querySelector('.counter-container')
+const getFiveButton = document.querySelector('#next')
 
 let fiveLaunches = []
 
@@ -52,7 +53,7 @@ async function get5launches() {
   }
 }
 
-get5launches()
+// get5launches()
 
 function displayLaunches(arr) {
   arr.forEach((item) => {
@@ -78,6 +79,9 @@ function showDetails(itemID) {
     details.style.display = 'block'
   }
 }
+
+getFiveButton.addEventListener('click', get5launches)
+
 
 //Create and display counters
 //search display function

@@ -25,17 +25,7 @@ label {
   overflow-y: scroll;
 }
 
-.search-container {
-  border: 2px solid red;
-  width: 100vw;
-  height: 15vh;
-  margin: 0;
-  position: fixed;
-  bottom: 0;
-  left:0;
-  display: flex;
-  flex-flow: column wrap;
-}
+
 
 /* THESE ARE THE STYLINGS FOR ALL THE COUNTER DIVs */
 .counter {
@@ -79,7 +69,7 @@ label {
 .countdown {
   grid-area: countdown;
   margin: 20px 10px 10px 10px;
-  text-shadow: 1px 2px black;
+  text-shadow: 1px 1px black;
 }
 .name {
   grid-area: name;
@@ -112,10 +102,24 @@ label {
 .details {
   display: none;
   text-align: center;
-  grid
+  grid-row-start: 0;
+  grid-row-end: 5;
 }
 
 /* THESE ARE THE STYLINGS FOR EVERYTHING IN THE INFO BAR ON THE BOTTOM */
+
+.search-container {
+  border: 2px solid red;
+  width: 100vw;
+  height: 15vh;
+  margin: 0;
+  position: fixed;
+  bottom: 0;
+  left:0;
+  display: flex;
+  flex-flow: column wrap;
+}
+
 .settings-div {
   border: 2px solid black;
   width: 20vw;
