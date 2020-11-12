@@ -50,34 +50,9 @@ label {
   width: 98vw;
   height: 12vh;
   margin: 10px 0 10px 0;
-  display: grid;
-  grid-template-columns:  repeat(5, auto);
-  grid-template-rows: repeat(2, auto);
-  grid-gap: 10px;
-  grid-template-areas: 
-    "countdown countdown name name name"
-    "date time type type dropdown";
+  
 }
-.counterTall {
-  border: 2px solid black;
-  background-image: url('https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2019/06/europe_s_rockets/19421217-6-eng-GB/Europe_s_rockets_pillars.jpg');
-  background-origin: content-box;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-color: grey;
-  border-radius: 10px;
-  width: 98vw;
-  height: 30vh;
-  margin: 10px 0 10px 0;
-  display: grid;
-  grid-template-columns:  repeat(5, auto);
-  grid-template-rows: repeat(2, auto);
-  grid-gap: 10px;
-  grid-template-areas: 
-    "countdown countdown name name name"
-    "date time type type dropdown";
-}
+
 .countdown
 .name
 .time
@@ -88,7 +63,18 @@ label {
 .more-details {
   pointer-events: none;
 }
-
+.background-div {
+  border: 2px;
+  border-radius: 10px;
+  background-color: rgba(160, 160, 160, .40);
+  display: grid;
+  grid-template-columns:  repeat(5, auto);
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 10px;
+  grid-template-areas: 
+    "countdown countdown name name name"
+    "date time type type dropdown";
+}
 .countdown {
   grid-area: countdown;
   margin: 20px 10px 10px 10px;
@@ -118,8 +104,8 @@ label {
   justify-self: end;
   width: 40px;
   height: 40px;
-  margin: 10px 10px 10px 10px;
-  padding: 0 0 10px 0;
+  /* margin: 10px 10px 10px 10px; */
+  /* padding: 0 0 10px 0; */
 }
 
 .details {

@@ -17,8 +17,8 @@ class launch {
     this.image = image
     this.url = url
     this.details = details
-    this.time = time
-    this.date = this.time 
+    this.time = time.slice(10)
+    this.date = time.slice(0,10)
   }
 }
 
@@ -60,7 +60,7 @@ function displayLaunches(arr) {
     counterDiv.className = 'counter'
     counterDiv.id = `A${item.id}`
     counterDiv.style.backgroundImage = `url('${item.image}')`
-    counterDiv.innerHTML = `<h2 class='countdown'>COUNTER GOES HERE</h2><h3 class='name'>${item.name}</h3><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'> `
+    counterDiv.innerHTML = `<div class='background-div'><h2 class='countdown'>COUNTER GOES HERE</h2><h3 class='name'>${item.name}</h3><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<br><a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'></div>`
     counterContainer.append(counterDiv)
     let itemID = `A${item.id}`
     counterDiv.addEventListener('click', () => showDetails(itemID))
