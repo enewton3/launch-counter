@@ -65,7 +65,8 @@ function displayLaunches(arr) {
     counterDiv.innerHTML = `<div class='background-div'><h1 class='countdown'>COUNTER GOES HERE</h1><h3 class='name'>${item.name}</h3><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<br><a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'></div>`
     counterContainer.append(counterDiv)
     let itemID = `A${item.id}`
-    setInterval(() => { countdown(item.datetime) }, 1000)
+    let clock = document.querySelector('.countdown')
+    clock.innerHTML = setInterval(() => { countdown(item.datetime) }, 1000)
     counterDiv.addEventListener('click', () => showDetails(itemID))
   })
   
@@ -112,6 +113,5 @@ searchBar.addEventListener('click', () => {
     let hours = Math.floor(countDowntime % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
     let minutes = Math.floor(countDowntime % (1000 * 60 * 60) / (1000 * 60))
     let seconds = Math.floor(countDowntime % (1000 * 60) / 1000)
-    let clock = document.querySelector('.countdown')
-    clock.innerHTML = `${days} : ${hours} : ${minutes} : ${seconds}`
+    return `${days} : ${hours} : ${minutes} : ${seconds}`
   }

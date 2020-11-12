@@ -12,7 +12,6 @@ label {
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
-  /* border: 2px solid black; */
   width: 100vw;
   height: 84vh;
   margin: 0;
@@ -70,7 +69,7 @@ label {
 .countdown {
   grid-area: countdown;
   margin: 20px 10px 10px 10px;
-  text-shadow: 1px 1px black;
+  text-shadow: 1px 1px grey;
 }
 .name {
   grid-area: name;
@@ -97,7 +96,6 @@ label {
   width: 40px;
   height: 40px;
   margin: 0 10px 0 0;
-  /* padding: 0 0 10px 0; */
 }
 
 .details {
@@ -106,6 +104,7 @@ label {
   grid-area: details;
   grid-row-start: 0;
   grid-row-end: 5;
+  margin: 0 20px 10px 20px;
 }
 
 /* THESE ARE THE STYLINGS FOR EVERYTHING IN THE INFO BAR ON THE BOTTOM */
