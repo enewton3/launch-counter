@@ -7,7 +7,7 @@ const access_token = config.access_token
 const searchBar = document.querySelector('#search-bar')
 const counterContainer = document.querySelector('.counter-container')
 const getFiveButton = document.querySelector('#next')
-
+let storeTheseLaunches = []
 let fiveLaunches = []
 
 class launch {
@@ -83,7 +83,7 @@ function showDetails(itemID) {
 getFiveButton.addEventListener('click', get5launches)
 
 
-//Create and display counters
+
 //search display function
   //when the search bar is clicked to search for something, a window pops up on the bottom of the screen displaying the search results
 
@@ -92,3 +92,15 @@ searchBar.addEventListener('click', () => {
 })
 
   //save counters into local storage
+
+  //Create and display counters
+  //COUNTDOWN CLOCKS
+  //everytime the page reloads, get the current time, store in variable
+  //need to parse the strings from the API in the get data function above - save that data with each launches objects as a date object
+  //calculates the date object - the current time
+  //needs to display as a human readable countdown clock
+
+function countdown(countDownTo) {
+  let currentTime = new Date().getTime()
+  
+  }
