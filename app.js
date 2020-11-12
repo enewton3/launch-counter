@@ -19,7 +19,8 @@ class launch {
     this.url = url
     this.details = details
     this.time = time.slice(10)
-    this.date = time.slice(0,10)
+    this.date = time.slice(0, 10)
+    this.datetime = time
   }
 }
 
@@ -61,11 +62,13 @@ function displayLaunches(arr) {
     counterDiv.className = 'counter'
     counterDiv.id = `A${item.id}`
     counterDiv.style.backgroundImage = `url('${item.image}')`
-    counterDiv.innerHTML = `<div class='background-div'><h2 class='countdown'>COUNTER GOES HERE</h2><h3 class='name'>${item.name}</h3><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<br><a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'></div>`
+    counterDiv.innerHTML = `<div class='background-div'><h1 class='countdown'>COUNTER GOES HERE</h1><h3 class='name'>${item.name}</h3><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<br><a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'></div>`
     counterContainer.append(counterDiv)
     let itemID = `A${item.id}`
+    setInterval(() => { countdown(item.datetime) }, 1000)
     counterDiv.addEventListener('click', () => showDetails(itemID))
-    })
+  })
+  
   }
 
 function showDetails(itemID) {
@@ -100,7 +103,15 @@ searchBar.addEventListener('click', () => {
   //calculates the date object - the current time
   //needs to display as a human readable countdown clock
 
-function countdown(countDownTo) {
-  let currentTime = new Date().getTime()
-  
+  function countdown(countDownTo) {
+    //found helpful guide @ https://www.educative.io/edpresso/how-to-create-a-countdown-timer-using-javascript
+    let countDownToTime = new Date(countDownTo).getTime()
+    let currentTime = new Date().getTime()
+    let countDowntime = countDownToTime - currentTime
+    let days = Math.floor(countDowntime / (1000 * 60 * 60 * 24))
+    let hours = Math.floor(countDowntime % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+    let minutes = Math.floor(countDowntime % (1000 * 60 * 60) / (1000 * 60))
+    let seconds = Math.floor(countDowntime % (1000 * 60) / 1000)
+    let clock = document.querySelector('.countdown')
+    clock.innerHTML = `${days} : ${hours} : ${minutes} : ${seconds}`
   }
