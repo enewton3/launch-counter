@@ -65,8 +65,9 @@ function displayLaunches(arr) {
     counterDiv.innerHTML = `<div class='background-div'><h1 class='countdown'>COUNTER GOES HERE</h1><h3 class='name'>${item.name}</h3><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<br><a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'></div>`
     counterContainer.append(counterDiv)
     let itemID = `A${item.id}`
-    let clock = document.querySelector('.countdown')
-    clock.innerHTML = setInterval(() => { countdown(item.datetime) }, 1000)
+    setInterval(() => { countdown(item.datetime) }, 1000)
+    // let clock = document.querySelector('.countdown')
+    // clock.innerHTML = setInterval(() => { countdown(item.datetime) }, 1000)
     counterDiv.addEventListener('click', () => showDetails(itemID))
   })
   
@@ -106,6 +107,7 @@ searchBar.addEventListener('click', () => {
 
   function countdown(countDownTo) {
     //found helpful guide @ https://www.educative.io/edpresso/how-to-create-a-countdown-timer-using-javascript
+    let clock = document.querySelector('.countdown')
     let countDownToTime = new Date(countDownTo).getTime()
     let currentTime = new Date().getTime()
     let countDowntime = countDownToTime - currentTime
@@ -113,5 +115,5 @@ searchBar.addEventListener('click', () => {
     let hours = Math.floor(countDowntime % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
     let minutes = Math.floor(countDowntime % (1000 * 60 * 60) / (1000 * 60))
     let seconds = Math.floor(countDowntime % (1000 * 60) / 1000)
-    return `${days} : ${hours} : ${minutes} : ${seconds}`
+    clock.innerHTML = `T- ${days} d : ${hours} h : ${minutes} m : ${seconds} s`
   }
