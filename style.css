@@ -57,15 +57,27 @@ label {
   grid-template-areas: 
     "countdown countdown name name name"
     "date time type type dropdown";
-  /* display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  align-content: center;
-  text-align: center; */
 }
-/* .counterTall {
-  height: 20vh !important;
-} */
+.counterTall {
+  border: 2px solid black;
+  background-image: url('https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2019/06/europe_s_rockets/19421217-6-eng-GB/Europe_s_rockets_pillars.jpg');
+  background-origin: content-box;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: grey;
+  border-radius: 10px;
+  width: 98vw;
+  height: 30vh;
+  margin: 10px 0 10px 0;
+  display: grid;
+  grid-template-columns:  repeat(5, auto);
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 10px;
+  grid-template-areas: 
+    "countdown countdown name name name"
+    "date time type type dropdown";
+}
 .countdown
 .name
 .time
@@ -112,6 +124,8 @@ label {
 
 .details {
   display: none;
+  text-align: center;
+
 }
 
 /* THESE ARE THE STYLINGS FOR EVERYTHING IN THE INFO BAR ON THE BOTTOM */

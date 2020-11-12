@@ -120,8 +120,8 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 | --- | :---: |  :---: | :---: | :---: |
 | Pitch, Wireframes, Priority Matrix| H | 2hrs | 2hrs | 2hrs| 
 | HTML | H | 2hrs| 1hrs | 0hrs |
-| CSS Styling | H | 3hrs| 1.5hrs | 0hrs |
-| Make CSS responsive | H | 3hrs| 0hrs | 0hrs |
+| CSS Styling | H | 3hrs| 3hrs | 0hrs |
+| Make CSS responsive | H | 3hrs| 1hrs | 0hrs |
 | Psuedocode | M | 1hr | .5hrs | 0hrs |
 | Search functionality - user input (Does this list next 5 launches by default?) | M | 3hrs | 0hrs | 0hrs |
 | Search DOM manipulation | H | 4hrs| 0hrs | 0hrs |

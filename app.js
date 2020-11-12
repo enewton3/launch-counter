@@ -10,7 +10,8 @@ const counterContainer = document.querySelector('.counter-container')
 let fiveLaunches = []
 
 class launch {
-  constructor(name, type, image, url, details, time) {
+  constructor(id, name, type, image, url, details, time) {
+    this.id = id
     this.name = name
     this.type = type
     this.image = image
@@ -34,13 +35,14 @@ async function get5launches() {
     console.log(response)
     let launchData = response.data.results
     for (let i = 0; i < 5; i++) {
+      let launchID = launchData[i].id
       let launchName = launchData[i].name
       let launchType = launchData[i].mission.type
       let launchImage = launchData[i].image
       let launchURL = launchData[i].url
       let launchTime = launchData[i].net
       let launchDetails = launchData[i].mission.description
-      let thisLaunch = new launch(launchName, launchType, launchImage, launchURL, launchDetails, launchTime)
+      let thisLaunch = new launch(launchID, launchName, launchType, launchImage, launchURL, launchDetails, launchTime)
       fiveLaunches.push(thisLaunch)
       //use these variables to create an object for each launch that can stay in local storage
     }
@@ -50,42 +52,33 @@ async function get5launches() {
   }
 }
 
-// get5launches()
+get5launches()
 
 function displayLaunches(arr) {
   arr.forEach((item) => {
     let counterDiv = document.createElement('div')
     counterDiv.className = 'counter'
+    counterDiv.id = `A${item.id}`
     counterDiv.style.backgroundImage = `url('${item.image}')`
     counterDiv.innerHTML = `<h2 class='countdown'>COUNTER GOES HERE</h2><h3 class='name'>${item.name}</h3><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'> `
     counterContainer.append(counterDiv)
-    let hamburger = document.querySelector('.dropdown-img')
-    hamburger.addEventListener('click', () => {
-      let details = counterDiv.querySelector('.details')
-      if (counterDiv.style.height === '30vh') {
-          counterDiv.style.height = '12vh'
-          details.style.display = 'none'
-      } else {
-          counterDiv.style.height = '30vh'
-          details.style.display = 'block'
-      }
+    let itemID = `A${item.id}`
+    counterDiv.addEventListener('click', () => showDetails(itemID))
     })
-  })
-}
+  }
 
-// function showDetails(event) {
-//   let eventTarget = event.target
-//   let details = eventTarget.querySelector('.details')
-//   console.log(eventTarget)
-//   if (eventTarget.style.height === '30vh') {
-//     eventTarget.style.height = '12vh'
-//     details.style.display = 'none'
-//   } else {
-//     eventTarget.style.height = '30vh'
-//     details.style.display = 'block'
-//   }
-  //look into making it a smooth transition
-// }
+function showDetails(itemID) {
+  let targetDiv = document.querySelector(`#${itemID}`)
+  let details = targetDiv.querySelector('.details')
+  if (targetDiv.style.height === '30vh') {
+    targetDiv.style.height = '12vh'
+    details.style.display = 'none'
+  } else {
+    targetDiv.style.height = '30vh'
+    details.style.display = 'block'
+  }
+  // look into making it a smooth transition
+}
 
 //Create and display counters
 //search display function
