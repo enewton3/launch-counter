@@ -57,6 +57,7 @@ button {
 .more-details {
   pointer-events: none;
 }
+
 .background-div {
   border: 2px;
   border-radius: 10px;

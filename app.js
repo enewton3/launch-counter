@@ -14,7 +14,7 @@ let intervalArr = []
 
 class launch {
   constructor(id, name, type, image, url, details, time) {
-    this.id = id
+    this.id = `A${id}`
     this.name = name
     this.type = type
     this.image = image
@@ -27,7 +27,8 @@ class launch {
 }
 
 class intervalObj {
-  constructor(num) {
+  constructor(id, num) {
+    this.id = id
     this.num = num
   }
 }
@@ -38,6 +39,7 @@ const headers = {
 }
   
 async function get5launches() {
+  fiveLaunches = []
   try {
     let response = await axios.get(upcomingLaunchesURL, headers)
     console.log(response)
@@ -63,23 +65,24 @@ function displayLaunches(arr) {
   arr.forEach((item, id) => {
     let counterDiv = document.createElement('div')
     counterDiv.className = 'counter'
-    counterDiv.id = `A${item.id}`
+    counterDiv.id = item.id
     counterDiv.style.backgroundImage = `url('${item.image}')`
     counterDiv.innerHTML = `<div class='background-div'><h1 class='countdown' id='${item.datetime}'>COUNTER GOES HERE</h1><h3 class='name'>${item.name}</h3><button class='remove'>X</button><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<br><a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'></div>`
     counterContainer.append(counterDiv)
-    let itemID = `A${item.id}`
+    let itemID = item.id
     let clock = counterDiv.querySelector('.countdown')
     // intervalArr[id] = setInterval(() => { clock.textContent = countdown(clock.id) }, 1000)
-    intervalArr[id] = new intervalObj(setInterval(() => { clock.textContent = countdown(clock.id) }, 1000))
+    intervalArr[id] = new intervalObj(itemID, (setInterval(() => { clock.textContent = countdown(clock.id) }, 1000)))
     let removeButton = counterDiv.querySelector('.remove')
-    removeButton.addEventListener('click', () => removeDiv(counterDiv, id))
-    counterDiv.addEventListener('click', () => showDetails(itemID))
+    removeButton.addEventListener('click', (e) => removeDiv(counterDiv, itemID, e))
+    counterDiv.addEventListener('click', (e) => showDetails(itemID, e))
   })
   console.log(intervalArr)
   // [`i${id}`]
 }
 
-function showDetails(itemID) {
+function showDetails(itemID, e) {
+  // e.stopPropagation()
   let targetDiv = document.querySelector(`#${itemID}`)
   let details = targetDiv.querySelector('.details')
   if (targetDiv.style.height === '30vh') {
@@ -121,34 +124,20 @@ function removeAll() {
   while (counterContainer.lastChild) {
     counterContainer.removeChild(counterContainer.lastChild)
   }
-  fiveLaunches.forEach((item) => fiveLaunches.shift(item))
-  intervalArr.forEach((item) => {
-    clearInterval(item.num)
-    intervalArr.shift()
-  })
+  fiveLaunches = []
+  intervalArr.forEach((item) => { clearInterval(item.num) })
+  intervalArr = []
   console.log(fiveLaunches)
   console.log(intervalArr)
 }
 clearButton.addEventListener('click', removeAll)
 
-function removeDiv(div, id) {
-  let allCounters = document.querySelectorAll('.counter')
-  div.remove()
-  let intervalToRemove = intervalArr[id]
-  console.log(intervalToRemove)
-  clearInterval(intervalToRemove.num)
-  if (intervalArr.length === 1) {
-    intervalArr.splice(0, 1)
-    console.log(intervalArr)
-  } else {
-    intervalArr.splice(id, 1)
-    console.log(intervalArr)
-  }
-  //clear interval with num === intervalToRemove.num
-  //splice that intervalObject out of IntervalArr
-
-  //splice the item out of fivelaunches array that has the same index number as intervalToRemove
+function removeDiv(div, id, e) {
+  e.stopPropagation()
+  div.remove() 
+  fiveLaunches = fiveLaunches.filter((item) => { return item.id !== id })
 }
+
 //SAVE SELECTED (displayed) FUNCTION
 //use array of displayed objects to save them to local storage
 //save counters into local storage
