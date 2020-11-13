@@ -9,6 +9,7 @@ const counterContainer = document.querySelector('.counter-container')
 const getFiveButton = document.querySelector('#next')
 let storeTheseLaunches = []
 let fiveLaunches = []
+let intervalArr = []
 
 class launch {
   constructor(id, name, type, image, url, details, time) {
@@ -21,6 +22,7 @@ class launch {
     this.time = time.slice(10)
     this.date = time.slice(0, 10)
     this.datetime = time
+    this.countdown = 'COUNTER GOES HERE'
   }
 }
 
@@ -54,24 +56,23 @@ async function get5launches() {
   }
 }
 
-// get5launches()
-
 function displayLaunches(arr) {
-  arr.forEach((item) => {
+  arr.forEach((item, id) => {
     let counterDiv = document.createElement('div')
     counterDiv.className = 'counter'
     counterDiv.id = `A${item.id}`
     counterDiv.style.backgroundImage = `url('${item.image}')`
-    counterDiv.innerHTML = `<div class='background-div'><h1 class='countdown'>COUNTER GOES HERE</h1><h3 class='name'>${item.name}</h3><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<br><a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'></div>`
+    counterDiv.innerHTML = `<div class='background-div'><h1 class='countdown' id='${item.datetime}'>COUNTER GOES HERE</h1><h3 class='name'>${item.name}</h3><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<br><a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'></div>`
     counterContainer.append(counterDiv)
     let itemID = `A${item.id}`
-    setInterval(() => { countdown(item.datetime) }, 1000)
-    // let clock = document.querySelector('.countdown')
-    // clock.innerHTML = setInterval(() => { countdown(item.datetime) }, 1000)
+    let clock = counterDiv.querySelector('.countdown')
+    intervalArr[`i${id}`] = setInterval(() => { clock.textContent = countdown(clock.id) }, 1000)
     counterDiv.addEventListener('click', () => showDetails(itemID))
   })
-  
-  }
+  console.log(intervalArr)
+  setTimeout(() => { clearInterval(intervalArr['i1']) }, 2000)
+  console.log(intervalArr)
+}
 
 function showDetails(itemID) {
   let targetDiv = document.querySelector(`#${itemID}`)
@@ -105,15 +106,24 @@ searchBar.addEventListener('click', () => {
   //calculates the date object - the current time
   //needs to display as a human readable countdown clock
 
-  function countdown(countDownTo) {
-    //found helpful guide @ https://www.educative.io/edpresso/how-to-create-a-countdown-timer-using-javascript
-    let clock = document.querySelector('.countdown')
-    let countDownToTime = new Date(countDownTo).getTime()
-    let currentTime = new Date().getTime()
-    let countDowntime = countDownToTime - currentTime
-    let days = Math.floor(countDowntime / (1000 * 60 * 60 * 24))
-    let hours = Math.floor(countDowntime % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
-    let minutes = Math.floor(countDowntime % (1000 * 60 * 60) / (1000 * 60))
-    let seconds = Math.floor(countDowntime % (1000 * 60) / 1000)
-    clock.innerHTML = `T- ${days} d : ${hours} h : ${minutes} m : ${seconds} s`
-  }
+function countdown(countDownTo) {
+  //found helpful guide @ https://www.educative.io/edpresso/how-to-create-a-countdown-timer-using-javascript
+  let countDownToTime = new Date(countDownTo).getTime()
+  let currentTime = new Date().getTime()
+  let countDowntime = countDownToTime - currentTime
+  let days = Math.floor(countDowntime / (1000 * 60 * 60 * 24))
+  let hours = Math.floor(countDowntime % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+  let minutes = Math.floor(countDowntime % (1000 * 60 * 60) / (1000 * 60))
+  let seconds = Math.floor(countDowntime % (1000 * 60) / 1000)
+  return `T- ${days} d : ${hours} h : ${minutes} m : ${seconds} s`
+}
+
+
+// function setCountdowns(arr) {
+//   arr.forEach((item) => {
+//     let countdownText = setInterval(countdown(item.datetime), 1000)
+//     item.countdown = countdownText
+//     })
+// }
+
+//remove intervals when removing launch divs objects
