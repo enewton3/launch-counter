@@ -7,6 +7,7 @@ const access_token = config.access_token
 const searchBar = document.querySelector('#search-bar')
 const counterContainer = document.querySelector('.counter-container')
 const getFiveButton = document.querySelector('#next')
+const clearButton = document.querySelector('#clear')
 let storeTheseLaunches = []
 let fiveLaunches = []
 let intervalArr = []
@@ -22,7 +23,6 @@ class launch {
     this.time = time.slice(10)
     this.date = time.slice(0, 10)
     this.datetime = time
-    this.countdown = 'COUNTER GOES HERE'
   }
 }
 
@@ -30,9 +30,8 @@ const headers = {
   headers: {
     'Authorization': `token ${access_token}`,
     },
-  }
-  //Get input from search bar
-
+}
+  
 async function get5launches() {
   try {
     let response = await axios.get(upcomingLaunchesURL, headers)
@@ -48,7 +47,6 @@ async function get5launches() {
       let launchDetails = launchData[i].mission.description
       let thisLaunch = new launch(launchID, launchName, launchType, launchImage, launchURL, launchDetails, launchTime)
       fiveLaunches.push(thisLaunch)
-      //use these variables to create an object for each launch that can stay in local storage
     }
     displayLaunches(fiveLaunches)
   } catch (error) {
@@ -62,16 +60,16 @@ function displayLaunches(arr) {
     counterDiv.className = 'counter'
     counterDiv.id = `A${item.id}`
     counterDiv.style.backgroundImage = `url('${item.image}')`
-    counterDiv.innerHTML = `<div class='background-div'><h1 class='countdown' id='${item.datetime}'>COUNTER GOES HERE</h1><h3 class='name'>${item.name}</h3><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<br><a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'></div>`
+    counterDiv.innerHTML = `<div class='background-div'><h1 class='countdown' id='${item.datetime}'>COUNTER GOES HERE</h1><h3 class='name'>${item.name}</h3><button class='remove'>X</button><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<br><a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'></div>`
     counterContainer.append(counterDiv)
     let itemID = `A${item.id}`
     let clock = counterDiv.querySelector('.countdown')
     intervalArr[`i${id}`] = setInterval(() => { clock.textContent = countdown(clock.id) }, 1000)
+    let removeButton = counterDiv.querySelector('.remove')
+    removeButton.addEventListener('click', () => removeDiv(counterDiv))
     counterDiv.addEventListener('click', () => showDetails(itemID))
   })
-  console.log(intervalArr)
-  setTimeout(() => { clearInterval(intervalArr['i1']) }, 2000)
-  console.log(intervalArr)
+  
 }
 
 function showDetails(itemID) {
@@ -86,26 +84,16 @@ function showDetails(itemID) {
   }
 }
 
-getFiveButton.addEventListener('click', get5launches)
-
-
-
-//search display function
-  //when the search bar is clicked to search for something, a window pops up on the bottom of the screen displaying the search results
-
-searchBar.addEventListener('click', () => {
-  
+getFiveButton.addEventListener('click', () => {
+  if (fiveLaunches.length === 5) {
+    return
+  } else {
+    get5launches()
+  }
 })
 
-  //save counters into local storage
-
-  //Create and display counters
-  //COUNTDOWN CLOCKS
-  //everytime the page reloads, get the current time, store in variable
-  //need to parse the strings from the API in the get data function above - save that data with each launches objects as a date object
-  //calculates the date object - the current time
-  //needs to display as a human readable countdown clock
-
+//COUNTDOWN FUNCTION
+//takes a datetime string, converts to Date object, subtracts to find time left, returns string
 function countdown(countDownTo) {
   //found helpful guide @ https://www.educative.io/edpresso/how-to-create-a-countdown-timer-using-javascript
   let countDownToTime = new Date(countDownTo).getTime()
@@ -115,15 +103,38 @@ function countdown(countDownTo) {
   let hours = Math.floor(countDowntime % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
   let minutes = Math.floor(countDowntime % (1000 * 60 * 60) / (1000 * 60))
   let seconds = Math.floor(countDowntime % (1000 * 60) / 1000)
-  return `T- ${days} d : ${hours} h : ${minutes} m : ${seconds} s`
+  return `T- ${days} D : ${hours} H : ${minutes} M : ${seconds} S`
 }
 
-
-// function setCountdowns(arr) {
-//   arr.forEach((item) => {
-//     let countdownText = setInterval(countdown(item.datetime), 1000)
-//     item.countdown = countdownText
-//     })
-// }
-
+//REMOVE ITEMS FUNCTIONs
 //remove intervals when removing launch divs objects
+function removeAll() {
+  while (counterContainer.lastChild) {
+    counterContainer.removeChild(counterContainer.lastChild)
+  }
+  intervalArr.forEach((item) => {
+    clearInterval(item.value)
+    intervalArr.shift()
+  })
+  fiveLaunches.forEach(() => {
+    fiveLaunches.shift()
+  })  
+  console.log(fiveLaunches)
+  console.log(intervalArr)
+}
+clearButton.addEventListener('click', removeAll)
+
+function removeDiv(div) {
+
+}
+//SAVE SELECTED (displayed) FUNCTION
+//use array of displayed objects to save them to local storage
+//save counters into local storage
+
+//SEARCH FUNCTION
+//search display function
+  //when the search bar is clicked to search for something, a window pops up on the bottom of the screen displaying the search results
+
+searchBar.addEventListener('click', () => {
+  
+})

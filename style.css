@@ -38,7 +38,7 @@ label {
   height: 12vh;
   margin: 10px 0 10px 0;
   transition: all .3s ease;
-  overflow-y: scroll;
+  overflow: hidden;
 }
 
 .countdown
@@ -57,13 +57,13 @@ label {
   background-color: rgba(160, 160, 160, .40);
   min-height: 100%;
   display: grid;
-  grid-template-columns:  repeat(5, auto);
+  grid-template-columns:  repeat(6, auto);
   grid-template-rows: repeat(3, auto);
   grid-gap: 10px;
   grid-template-areas: 
-    "countdown countdown name name name"
-    "date time type type dropdown"
-    "details details details details details";
+    "countdown countdown name name name remove"
+    "date time type type type dropdown"
+    "details details details details details details";
   transition: all .3s ease;
 }
 .countdown {
@@ -76,6 +76,18 @@ label {
   justify-self: end;
   text-align: right;
   margin: 20px 10px 10px 10px;
+}
+.remove {
+  grid-area: remove;
+  align-self: start;
+  justify-self: end;
+  border: none;
+  background: none;
+  text-align: justify;
+  font-size: 20px;
+  margin: 20px 15px 0 0;
+  padding: 0;
+  line-height: 25%;
 }
 .time {
   grid-area: time;
