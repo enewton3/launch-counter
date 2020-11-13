@@ -147,3 +147,6 @@ function reverse(string) {
 
 ## Change Log
  Use this section to document what changes were made and the reasoning behind those changes.
+
+ ## Important Inclusion
+ ![space](/assets/spacecore.jpeg "spacecore")
