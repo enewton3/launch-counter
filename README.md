@@ -148,5 +148,7 @@ function reverse(string) {
 ## Change Log
  Use this section to document what changes were made and the reasoning behind those changes.
 
+ - Maybe add agency and other details instead of long details. Paragraph long details don't look great. Single or double line ones do.
+
  ## Important Inclusion
  ![space](/assets/spacecore.jpeg "spacecore")
