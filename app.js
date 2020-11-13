@@ -64,12 +64,13 @@ function displayLaunches(arr) {
     counterContainer.append(counterDiv)
     let itemID = `A${item.id}`
     let clock = counterDiv.querySelector('.countdown')
-    intervalArr[`i${id}`] = setInterval(() => { clock.textContent = countdown(clock.id) }, 1000)
+    intervalArr[id] = setInterval(() => { clock.textContent = countdown(clock.id) }, 1000)
     let removeButton = counterDiv.querySelector('.remove')
     removeButton.addEventListener('click', () => removeDiv(counterDiv))
     counterDiv.addEventListener('click', () => showDetails(itemID))
   })
-  
+  console.log(intervalArr)
+  // [`i${id}`]
 }
 
 function showDetails(itemID) {
@@ -112,20 +113,29 @@ function removeAll() {
   while (counterContainer.lastChild) {
     counterContainer.removeChild(counterContainer.lastChild)
   }
-  intervalArr.forEach((item) => {
-    clearInterval(item.value)
-    intervalArr.shift()
-  })
-  fiveLaunches.forEach(() => {
+  for (i = 0; i < fiveLaunches.length; i++) {
     fiveLaunches.shift()
-  })  
+  }
+  for (i = 0; i < intervalArr.length; i++) {
+    clearInterval(intervalArr[i])
+    intervalArr.shift()
+  }
   console.log(fiveLaunches)
   console.log(intervalArr)
+  // intervalArr.forEach((item) => {
+  //   clearInterval(item.value)
+  //   intervalArr.splice(0,1)
+  // })
+  // fiveLaunches.forEach(() => {
+  //   fiveLaunches.splice(0,1)
+  // })  
+  // console.log(fiveLaunches)
+  // console.log(intervalArr)
 }
 clearButton.addEventListener('click', removeAll)
 
 function removeDiv(div) {
-
+  div.remove()
 }
 //SAVE SELECTED (displayed) FUNCTION
 //use array of displayed objects to save them to local storage
