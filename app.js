@@ -1,15 +1,15 @@
 console.log('Hello World')
 
 let upcomingLaunchesURL = 'https://ll.thespacedevs.com/2.0.0/launch/upcoming/ '
-let searchQuery = ' '
-let searchUpcoming = `https://ll.thespacedevs.com/2.0.0/launch/upcoming?search=${searchQuery}`
+// let searchQuery = ' '
+// let searchUpcoming = `https://ll.thespacedevs.com/2.0.0/launch/upcoming?search=${searchQuery}`
 const access_token = config.access_token
 const searchBar = document.querySelector('#search-bar')
 const counterContainer = document.querySelector('.counter-container')
 const getFiveButton = document.querySelector('#next')
 const clearButton = document.querySelector('#clear')
-let storeTheseLaunches = []
-let fiveLaunches = []
+let searchedLaunches = []
+let sixLaunches = []
 let intervalArr = []
 
 class launch {
@@ -20,7 +20,7 @@ class launch {
     this.image = image
     this.url = url
     this.details = details
-    this.time = time.slice(10)
+    this.time = `${time.slice(10, 19)} GMT`
     this.date = time.slice(0, 10)
     this.datetime = time
   }
@@ -38,13 +38,13 @@ const headers = {
     },
 }
   
-async function get5launches() {
-  fiveLaunches = []
+async function get6launches() {
+  sixLaunches = []
   try {
     let response = await axios.get(upcomingLaunchesURL, headers)
     console.log(response)
     let launchData = response.data.results
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
       let launchID = launchData[i].id
       let launchName = launchData[i].name
       let launchType = launchData[i].mission.type
@@ -53,9 +53,9 @@ async function get5launches() {
       let launchTime = launchData[i].net
       let launchDetails = launchData[i].mission.description
       let thisLaunch = new launch(launchID, launchName, launchType, launchImage, launchURL, launchDetails, launchTime)
-      fiveLaunches.push(thisLaunch)
+      sixLaunches.push(thisLaunch)
     }
-    displayLaunches(fiveLaunches)
+    displayLaunches(sixLaunches)
   } catch (error) {
     console.log(error)
   }
@@ -97,10 +97,10 @@ function showDetails(itemID, e) {
 }
 
 getFiveButton.addEventListener('click', () => {
-  if (fiveLaunches.length === 5) {
+  if (sixLaunches.length === 6) {
     return
   } else {
-    get5launches()
+    get6launches()
   }
 })
 
@@ -124,18 +124,16 @@ function removeAll() {
   while (counterContainer.lastChild) {
     counterContainer.removeChild(counterContainer.lastChild)
   }
-  fiveLaunches = []
+  sixLaunches = []
   intervalArr.forEach((item) => { clearInterval(item.num) })
   intervalArr = []
-  console.log(fiveLaunches)
-  console.log(intervalArr)
 }
 clearButton.addEventListener('click', removeAll)
 
 function removeDiv(div, id, e) {
   e.stopPropagation()
   div.remove() 
-  fiveLaunches = fiveLaunches.filter((item) => { return item.id !== id })
+  sixLaunches = sixLaunches.filter((item) => { return item.id !== id })
 }
 
 //SAVE SELECTED (displayed) FUNCTION
@@ -145,7 +143,28 @@ function removeDiv(div, id, e) {
 //SEARCH FUNCTION
 //search display function
   //when the search bar is clicked to search for something, a window pops up on the bottom of the screen displaying the search results
-
+async function search(searchQuery) {
+  let searchUpcoming = `https://ll.thespacedevs.com/2.0.0/launch/upcoming?search=${searchQuery}`
+  try {
+    let response = await axios.get(upcomingLaunchesURL, headers)
+    console.log(response)
+    let launchData = response.data.results
+    for (let i = 0; i < 6; i++) {
+      let launchID = launchData[i].id
+      let launchName = launchData[i].name
+      let launchType = launchData[i].mission.type
+      let launchImage = launchData[i].image
+      let launchURL = launchData[i].url
+      let launchTime = launchData[i].net
+      let launchDetails = launchData[i].mission.description
+      let thisLaunch = new launch(launchID, launchName, launchType, launchImage, launchURL, launchDetails, launchTime)
+      searchedLaunches.push(thisLaunch)
+    }
+    displayLaunches(searchedLaunches)
+  } catch (error) {
+    console.log(error)
+  }
+}
 searchBar.addEventListener('click', () => {
   
 })
