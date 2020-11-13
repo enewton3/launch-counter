@@ -85,9 +85,9 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 #### MVP 
 
 - Pulling Data from API - Launch Dates, times, types, and extra description ----tick----
-- CSS responsive design - primarily for mobile, but looks decent on desktop as well.
-- Ability to display more information about a specific launch, and also link to even more information
-- displays a photo of the spacecraft being used behind each launch countdown using spacecraft endpoint of API
+- CSS responsive design - primarily for mobile, but looks decent on desktop as well. ----tick----
+- Ability to display more information about a specific launch, and also link to even more information ----tick----
+- displays a photo of the spacecraft being used behind each launch countdown using spacecraft endpoint of API ----tick----
 
 
 #### PostMVP  

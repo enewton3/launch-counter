@@ -27,8 +27,7 @@ class launch {
 }
 
 class intervalObj {
-  constructor(id, num) {
-    this.id = id
+  constructor(num) {
     this.num = num
   }
 }
@@ -71,7 +70,7 @@ function displayLaunches(arr) {
     let itemID = `A${item.id}`
     let clock = counterDiv.querySelector('.countdown')
     // intervalArr[id] = setInterval(() => { clock.textContent = countdown(clock.id) }, 1000)
-    intervalArr[id] = new intervalObj(id, setInterval(() => { clock.textContent = countdown(clock.id) }, 1000))
+    intervalArr[id] = new intervalObj(setInterval(() => { clock.textContent = countdown(clock.id) }, 1000))
     let removeButton = counterDiv.querySelector('.remove')
     removeButton.addEventListener('click', () => removeDiv(counterDiv, id))
     counterDiv.addEventListener('click', () => showDetails(itemID))
@@ -122,20 +121,33 @@ function removeAll() {
   while (counterContainer.lastChild) {
     counterContainer.removeChild(counterContainer.lastChild)
   }
-  for (i = 0; i < fiveLaunches.length; i++) {
-    fiveLaunches.shift()
-  }
-  for (i = 0; i < intervalArr.length; i++) {
-    clearInterval(intervalArr[i])
+  fiveLaunches.forEach((item) => fiveLaunches.shift(item))
+  intervalArr.forEach((item) => {
+    clearInterval(item.num)
     intervalArr.shift()
-  }
+  })
   console.log(fiveLaunches)
   console.log(intervalArr)
 }
 clearButton.addEventListener('click', removeAll)
 
 function removeDiv(div, id) {
+  let allCounters = document.querySelectorAll('.counter')
   div.remove()
+  let intervalToRemove = intervalArr[id]
+  console.log(intervalToRemove)
+  clearInterval(intervalToRemove.num)
+  if (intervalArr.length === 1) {
+    intervalArr.splice(0, 1)
+    console.log(intervalArr)
+  } else {
+    intervalArr.splice(id, 1)
+    console.log(intervalArr)
+  }
+  //clear interval with num === intervalToRemove.num
+  //splice that intervalObject out of IntervalArr
+
+  //splice the item out of fivelaunches array that has the same index number as intervalToRemove
 }
 //SAVE SELECTED (displayed) FUNCTION
 //use array of displayed objects to save them to local storage
