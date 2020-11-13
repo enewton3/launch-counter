@@ -199,14 +199,14 @@ button {
     margin: 5px 0 5px 0;
   }
   .background-div {
-    grid-template-columns:  repeat(3, auto);
+    grid-template-columns:  repeat(4, auto);
     grid-template-rows: repeat(4, auto);
     grid-gap: 0px;
     grid-template-areas: 
-    "countdown countdown remove"
-    "name name name"
-    "date time type"
-    "details details details"
+    "countdown countdown countdown remove"
+    "name name name name"
+    "date time type type"
+    "details details details details"
   }
   .remove {
     grid-area: remove;
@@ -219,6 +219,7 @@ button {
     margin: 0 0 0 5px;
     font-size: 18px;
     text-align: left;
+    max-height: 26px;
   }
   .name {
     margin: 0;

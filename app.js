@@ -26,6 +26,12 @@ class launch {
   }
 }
 
+class intervalObj {
+  constructor(id, num) {
+    this.id = id
+    this.num = num
+  }
+}
 const headers = {
   headers: {
     'Authorization': `token ${access_token}`,
@@ -64,7 +70,8 @@ function displayLaunches(arr) {
     counterContainer.append(counterDiv)
     let itemID = `A${item.id}`
     let clock = counterDiv.querySelector('.countdown')
-    intervalArr[id] = setInterval(() => { clock.textContent = countdown(clock.id) }, 1000)
+    // intervalArr[id] = setInterval(() => { clock.textContent = countdown(clock.id) }, 1000)
+    intervalArr[id] = new intervalObj(id, setInterval(() => { clock.textContent = countdown(clock.id) }, 1000))
     let removeButton = counterDiv.querySelector('.remove')
     removeButton.addEventListener('click', () => removeDiv(counterDiv, id))
     counterDiv.addEventListener('click', () => showDetails(itemID))
@@ -124,22 +131,11 @@ function removeAll() {
   }
   console.log(fiveLaunches)
   console.log(intervalArr)
-  // intervalArr.forEach((item) => {
-  //   clearInterval(item.value)
-  //   intervalArr.splice(0,1)
-  // })
-  // fiveLaunches.forEach(() => {
-  //   fiveLaunches.splice(0,1)
-  // })  
-  // console.log(fiveLaunches)
-  // console.log(intervalArr)
 }
 clearButton.addEventListener('click', removeAll)
 
 function removeDiv(div, id) {
   div.remove()
-  fiveLaunches.splice(id, 1)
-  intervalArr.splice(id, 1)
 }
 //SAVE SELECTED (displayed) FUNCTION
 //use array of displayed objects to save them to local storage
