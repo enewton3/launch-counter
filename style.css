@@ -6,6 +6,12 @@ body {
 label {
   display: none;
 }
+#submit,
+button {
+  background-color: black;
+  color: white;
+  transition-duration: 0.4s;
+}
 
 .counter-container {
   background-image: url('https://static01.nyt.com/images/2020/02/04/science/30SCI-SPITZER1c/30SCI-SPITZER1c-mobileMasterAt3x-v2.jpg');
@@ -38,7 +44,7 @@ label {
   height: 12vh;
   margin: 10px 0 10px 0;
   transition: all .3s ease;
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 .countdown
@@ -56,10 +62,11 @@ label {
   border-radius: 10px;
   background-color: rgba(160, 160, 160, .40);
   min-height: 100%;
+  max-height: 100%;
   display: grid;
   grid-template-columns:  repeat(6, auto);
   grid-template-rows: repeat(3, auto);
-  grid-gap: 10px;
+  grid-gap: 5px;
   grid-template-areas: 
     "countdown countdown name name name remove"
     "date time type type type dropdown"
@@ -91,23 +98,23 @@ label {
 }
 .time {
   grid-area: time;
-  margin: 10px 10px 20px 10px;
+  margin: 0px 10px 0px 10px;
 }
 .type{
   grid-area: type;
-  margin: 10px 10px 20px 10px;
+  margin: 0px 10px 0px 10px;
   justify-self: center;
 }
 .date {
   grid-area: date;
-  margin: 10px 10px 20px 10px;
+  margin: 0px 10px 0px 10px;
 }
 .dropdown-img {
   grid-area: dropdown;
   justify-self: end;
-  width: 40px;
-  height: 40px;
-  margin: 0 10px 0 0;
+  width: 30px;
+  height: 30px;
+  margin: 0 10px 0px 0;
 }
 
 .details {
@@ -122,7 +129,7 @@ label {
 /* THESE ARE THE STYLINGS FOR EVERYTHING IN THE INFO BAR ON THE BOTTOM */
 
 .search-container {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: 100vw;
   height: 15vh;
   margin: 0;
@@ -134,7 +141,7 @@ label {
 }
 
 .settings-div {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: 20vw;
   height: 100%;
   align-self: flex-end;
@@ -153,7 +160,7 @@ label {
 }
 
 .site-info {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   position: absolute;
   bottom: 2px;
   left: 5px;
@@ -185,3 +192,74 @@ label {
   margin: 5px;
 }
 
+/* MEDIA QUERYS FOR RESPONSIVENESS */
+@media (max-width: 750px) {
+  .counter {
+    width: 100vw;
+    margin: 5px 0 5px 0;
+  }
+  .background-div {
+    grid-template-columns:  repeat(3, auto);
+    grid-template-rows: repeat(4, auto);
+    grid-gap: 0px;
+    grid-template-areas: 
+    "countdown countdown remove"
+    "name name name"
+    "date time type"
+    "details details details"
+  }
+  .remove {
+    grid-area: remove;
+    height: 10px;
+    width: 10px;
+    font-size: 9px;
+    margin: 5px 5px 0 0;
+  }
+  .countdown {
+    margin: 0 0 0 5px;
+    font-size: 18px;
+    text-align: left;
+  }
+  .name {
+    margin: 0;
+    font-size: 13px;
+    text-align: center;
+    justify-self: center;
+  }
+  .dropdown-img {
+    display: none;
+  }
+  .date,
+  .time,
+  .type, 
+  .details,
+  .copyright {
+    margin: 0 auto;
+    font-size: 10px;
+  }
+  .site-info {
+    width: 60%;
+  }
+  .site-info > h1 {
+    font-size: 18px;
+    margin: 0;
+  }
+  .settings-div {
+    overflow-y: scroll;
+    margin: 0;
+    width: 33%;
+  }
+  .setting-div > button {
+   font-size: 8px;
+  }
+  #search-bar {
+    width: 120%;
+    margin: 0px 0 0 2px;
+    text-align: center;
+  }
+  
+  #submit {
+    margin: 0;
+    display: none;
+  }
+}

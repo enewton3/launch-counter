@@ -66,7 +66,7 @@ function displayLaunches(arr) {
     let clock = counterDiv.querySelector('.countdown')
     intervalArr[id] = setInterval(() => { clock.textContent = countdown(clock.id) }, 1000)
     let removeButton = counterDiv.querySelector('.remove')
-    removeButton.addEventListener('click', () => removeDiv(counterDiv))
+    removeButton.addEventListener('click', () => removeDiv(counterDiv, id))
     counterDiv.addEventListener('click', () => showDetails(itemID))
   })
   console.log(intervalArr)
@@ -79,9 +79,11 @@ function showDetails(itemID) {
   if (targetDiv.style.height === '30vh') {
     targetDiv.style.height = '12vh'
     details.style.display = 'none'
+    targetDiv.style.overflowY ='hidden'
   } else {
     targetDiv.style.height = '30vh'
     details.style.display = 'block'
+    targetDiv.style.overflowY = 'scroll'
   }
 }
 
@@ -134,8 +136,10 @@ function removeAll() {
 }
 clearButton.addEventListener('click', removeAll)
 
-function removeDiv(div) {
+function removeDiv(div, id) {
   div.remove()
+  fiveLaunches.splice(id, 1)
+  intervalArr.splice(id, 1)
 }
 //SAVE SELECTED (displayed) FUNCTION
 //use array of displayed objects to save them to local storage
@@ -148,3 +152,7 @@ function removeDiv(div) {
 searchBar.addEventListener('click', () => {
   
 })
+
+
+//Asking Corey about -
+//why isn't .shift getting rid of the whole array?
