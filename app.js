@@ -5,11 +5,14 @@ let upcomingLaunchesURL = 'https://ll.thespacedevs.com/2.0.0/launch/upcoming/ '
 // let searchUpcoming = `https://ll.thespacedevs.com/2.0.0/launch/upcoming?search=${searchQuery}`
 const access_token = config.access_token
 const searchBar = document.querySelector('#search-bar')
+const searchForm = document.querySelector('form')
 const counterContainer = document.querySelector('.counter-container')
 const getFiveButton = document.querySelector('#next')
 const clearButton = document.querySelector('#clear')
+const searchContainer = document.querySelector('.search-container')
+const searchResults = document.querySelector('.search-results')
 let searchedLaunches = []
-let sixLaunches = []
+let fiveLaunches = []
 let intervalArr = []
 
 class launch {
@@ -38,13 +41,13 @@ const headers = {
     },
 }
   
-async function get6launches() {
-  sixLaunches = []
+async function get5launches() {
+  fiveLaunches = []
   try {
     let response = await axios.get(upcomingLaunchesURL, headers)
     console.log(response)
     let launchData = response.data.results
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 5; i++) {
       let launchID = launchData[i].id
       let launchName = launchData[i].name
       let launchType = launchData[i].mission.type
@@ -53,9 +56,9 @@ async function get6launches() {
       let launchTime = launchData[i].net
       let launchDetails = launchData[i].mission.description
       let thisLaunch = new launch(launchID, launchName, launchType, launchImage, launchURL, launchDetails, launchTime)
-      sixLaunches.push(thisLaunch)
+      fiveLaunches.push(thisLaunch)
     }
-    displayLaunches(sixLaunches)
+    displayLaunches(fiveLaunches)
   } catch (error) {
     console.log(error)
   }
@@ -85,22 +88,22 @@ function showDetails(itemID, e) {
   // e.stopPropagation()
   let targetDiv = document.querySelector(`#${itemID}`)
   let details = targetDiv.querySelector('.details')
-  if (targetDiv.style.height === '30vh') {
-    targetDiv.style.height = '12vh'
+  if (targetDiv.style.height === '30%') {
+    targetDiv.style.height = '15%'
     details.style.display = 'none'
     targetDiv.style.overflowY ='hidden'
   } else {
-    targetDiv.style.height = '30vh'
+    targetDiv.style.height = '30%'
     details.style.display = 'block'
     targetDiv.style.overflowY = 'scroll'
   }
 }
 
 getFiveButton.addEventListener('click', () => {
-  if (sixLaunches.length === 6) {
+  if (fiveLaunches.length === 6) {
     return
   } else {
-    get6launches()
+    get5launches()
   }
 })
 
@@ -124,7 +127,7 @@ function removeAll() {
   while (counterContainer.lastChild) {
     counterContainer.removeChild(counterContainer.lastChild)
   }
-  sixLaunches = []
+  fiveLaunches = []
   intervalArr.forEach((item) => { clearInterval(item.num) })
   intervalArr = []
 }
@@ -133,7 +136,7 @@ clearButton.addEventListener('click', removeAll)
 function removeDiv(div, id, e) {
   e.stopPropagation()
   div.remove() 
-  sixLaunches = sixLaunches.filter((item) => { return item.id !== id })
+  fiveLaunches = fiveLaunches.filter((item) => { return item.id !== id })
 }
 
 //SAVE SELECTED (displayed) FUNCTION
@@ -146,29 +149,38 @@ function removeDiv(div, id, e) {
 async function search(searchQuery) {
   let searchUpcoming = `https://ll.thespacedevs.com/2.0.0/launch/upcoming?search=${searchQuery}`
   try {
-    let response = await axios.get(upcomingLaunchesURL, headers)
-    console.log(response)
-    let launchData = response.data.results
-    for (let i = 0; i < 6; i++) {
-      let launchID = launchData[i].id
-      let launchName = launchData[i].name
-      let launchType = launchData[i].mission.type
-      let launchImage = launchData[i].image
-      let launchURL = launchData[i].url
-      let launchTime = launchData[i].net
-      let launchDetails = launchData[i].mission.description
+    let response = await axios.get(searchUpcoming, headers)
+    let searchData = response.data.results
+    console.log(searchData)
+    searchResults.style.display = 'block'
+    // searchResults.style.height = '75%'
+    searchData.forEach((item) => {
+      let resultDiv = document.createElement('div')
+      resultDiv.className = 'result-div'
+      let launchID = item.id
+      let launchName = item.name
+      let launchType = 'item.mission.type'
+      let launchImage = item.image
+      let launchURL = item.url
+      let launchTime = item.net
+      let launchDetails = 'item.mission.description'
       let thisLaunch = new launch(launchID, launchName, launchType, launchImage, launchURL, launchDetails, launchTime)
-      searchedLaunches.push(thisLaunch)
-    }
-    displayLaunches(searchedLaunches)
+      resultDiv.innerHTML = `<img src='${launchImage}' class='search-img'><p class='search-name'>${launchName}</p>`
+      searchResults.appendChild(resultDiv)
+      resultDiv.addEventListener('click', addLaunch)
+      })
   } catch (error) {
     console.log(error)
   }
 }
-searchBar.addEventListener('click', () => {
-  
+searchForm.addEventListener('submit', (event) => {
+  event.preventDefault()
+  const searchQuery = searchBar.value
+  search(searchQuery)
 })
 
-
-//Asking Corey about -
-//why isn't .shift getting rid of the whole array?
+function addLaunch() {
+  //adds launch to launches array
+  //displays selected launches in the dom
+  //clears search box
+}
