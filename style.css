@@ -45,6 +45,7 @@ form {
   border-radius: 10px;
   width: 98%;
   height: 15%;
+  min-height: 15%;
   margin: 5px 0 5px 0;
   transition: all .3s ease;
   overflow-y: hidden;

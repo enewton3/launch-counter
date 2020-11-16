@@ -28,7 +28,7 @@ let intervalArr = []
 let saveThisArray = []
 let fiveEvents = []
 
-
+//Classes for making objects!
 class launch {
   constructor(id, name, type, image, url, details, time) {
     this.id = `A${id}`
@@ -67,6 +67,7 @@ class intervalObj {
   }
 }
 
+//Headers for making API calls to Launch Library
 const headers = {
   headers: {
     'Authorization': `token ${access_token}`,
@@ -162,6 +163,7 @@ function removeAll() {
   intervalArr.forEach((item) => { clearInterval(item.num) })
   intervalArr = []
   searchedLaunches = []
+  fiveLaunches = []
 }
 clearButton.addEventListener('click', removeAll)
 
@@ -170,6 +172,7 @@ function removeDiv(div, id, e) {
   div.remove() 
   fiveLaunches = fiveLaunches.filter((item) => { return item.id !== id })
   searchedLaunches = searchedLaunches.filter((item) => { return item.id !== id })
+  fiveEvents = fiveEvents.filter((item) => { return item.id !== id })
 }
 
 //SAVE SELECTED (displayed) FUNCTION
@@ -282,6 +285,8 @@ async function changeBackground() {
 }
 changeBackground()
 
+//GET 5 UPCOMING SPACE EVENTS
+//same as get 5 launches, but for events
 async function getFiveEvents() {
   fiveEvents = []
   try {
@@ -309,3 +314,7 @@ async function getFiveEvents() {
   }
 }
 eventButton.addEventListener('click', () => { getFiveEvents() })
+
+//EVENTS SEARCH
+
+//PAST LAUNCHES SEARCH
