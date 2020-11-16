@@ -3,10 +3,13 @@ console.log('Hello World')
 let upcomingLaunchesURL = 'https://ll.thespacedevs.com/2.0.0/launch/upcoming/ '
 // let searchQuery = ' '
 // let searchUpcoming = `https://ll.thespacedevs.com/2.0.0/launch/upcoming?search=${searchQuery}`
+const thisStorage = window.localStorage
 const access_token = config.access_token
 const searchBar = document.querySelector('#search-bar')
 const searchForm = document.querySelector('form')
 const counterContainer = document.querySelector('.counter-container')
+const saveButton = document.querySelector('#save')
+const retrieveButton = document.querySelector('#retrieve')
 const getFiveButton = document.querySelector('#next')
 const clearButton = document.querySelector('#clear')
 const searchContainer = document.querySelector('.search-container')
@@ -14,6 +17,8 @@ const searchResults = document.querySelector('.search-results')
 let searchedLaunches = []
 let fiveLaunches = []
 let intervalArr = []
+const saveThisArray = []
+
 
 class launch {
   constructor(id, name, type, image, url, details, time) {
@@ -139,6 +144,22 @@ function removeDiv(div, id, e) {
 //SAVE SELECTED (displayed) FUNCTION
 //use array of displayed objects to save them to local storage
 //save counters into local storage
+function saveLocal() {
+  fiveLaunches.forEach((item) => { saveThisArray.push(item) })
+  searchedLaunches.forEach((item) => { saveThisArray.push(item) })
+  fiveLaunches = []
+  searchedLaunches = []
+  thisStorage.clear()
+  for (let i = 0; i < saveThisArray.length; i++){
+    let item = JSON.stringify(saveThisArray[i])
+    thisStorage.setItem(`savedLaunch ${i}`, item)
+  }
+  console.log(thisStorage)
+}
+saveButton.addEventListener('click', () => { saveLocal() })
+
+//RETRIEVE FUNCTION 
+//use JSON.parse on the items in Storage
 
 //SEARCH FUNCTION
 //search display function
@@ -182,6 +203,7 @@ function addLaunch(launch) {
     searchResults.removeChild(searchResults.lastChild)
   }
   //check if searched launches includes the launch to be added
+  //if it does, don't display it
   searchedLaunches.push(launch)
   searchedLaunches.filter()
   displayLaunches(searchedLaunches)
