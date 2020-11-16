@@ -179,19 +179,19 @@ form {
   left: 5px;
   width: 70%;
   height: 65%;
-  margin: 0 0 5px 0;
+  margin: 0 5px 5px 10px;
   /* border: 2px solid black; */
 }
 
 .site-info > h1 {
-  margin: 0 0 0 10px;
+  margin: 0px;
 }
 
 .image-info,
 .create-info,
 .data-info,
 .copyright {
-  margin: 0 0 0 10px;
+  margin: 0px;
 }
 
 .data-info,
@@ -322,14 +322,11 @@ form {
   .settings-div > button {
     font-size: 10px;
   }
-  /* #rocket {
-    z-index: -2;
-    position: absolute;
-    max-height: 100%;
-    max-width: 30%;
-    left: 75%;
-    bottom: 10px;
-  } */
+  .data-info,
+  .image-info {
+    font-size: 9px;
+    display: block;
+}
 }
 
 @media (max-height: 700px) {
