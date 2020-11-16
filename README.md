@@ -2,7 +2,7 @@
 
 ## Project Name
 
-SPAAAAAACCCEEEEEE
+Launch Counter
 
 ## Project Description
 
@@ -170,4 +170,6 @@ function displayLaunches(arr) {
  - 11/16/2020: Added Events to add 5
 
  ## Important Inclusion
+ 
+ SPAAAAAACCCEEEEEE
  ![space](/assets/spacecore.jpeg "spacecore")
