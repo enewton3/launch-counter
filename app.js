@@ -66,12 +66,14 @@ class intervalObj {
     this.num = num
   }
 }
+
 const headers = {
   headers: {
     'Authorization': `token ${access_token}`,
     },
 }
 
+//API Call for upcoming launches
 async function get5launches() {
   fiveLaunches = []
   try {
@@ -95,6 +97,7 @@ async function get5launches() {
 }
 getFiveButton.addEventListener('click', () => { get5launches() })
 
+//Display launches as new divs
 function displayLaunches(arr) {
   arr.forEach((item, id) => {
     if (checkForDupes(item)) {
@@ -116,6 +119,8 @@ function displayLaunches(arr) {
   })
 }
 
+//SHOW DETAILS
+//expand div to reveal details
 function showDetails(itemID, e) {
   let targetDiv = document.querySelector(`#${itemID}`)
   let details = targetDiv.querySelector('.details')
