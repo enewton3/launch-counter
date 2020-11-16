@@ -149,8 +149,8 @@ function reverse(string) {
 ## Change Log
  Use this section to document what changes were made and the reasoning behind those changes.
 
- - Maybe add agency and other details instead of long details. Paragraph long details don't look great. Single or double line ones do.
  - 11/16/2020: Added APOD as background image of main section
+ - 11/16/2020: Added Events to add 5
 
  ## Important Inclusion
  ![space](/assets/spacecore.jpeg "spacecore")
