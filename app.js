@@ -128,11 +128,13 @@ function showDetails(itemID, e) {
   let counterBackground = targetDiv.querySelector('.background-div')
   if (targetDiv.style.height === '30%') {
     targetDiv.style.height = '15%'
+    targetDiv.style.minHeight = '15%'
     details.style.display = 'none'
     targetDiv.style.overflowY = 'hidden'
     counterBackground.style.overflowY = 'hidden'
   } else {
     targetDiv.style.height = '30%'
+    targetDiv.style.minHeight = '30%'
     details.style.display = 'block'
     targetDiv.style.overflowY = 'scroll'
     counterBackground.style.overflowY = 'scroll'

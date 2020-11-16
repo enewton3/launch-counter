@@ -142,7 +142,7 @@ form {
 /* THESE ARE THE STYLINGS FOR EVERYTHING IN THE INFO BAR ON THE BOTTOM */
 
 .search-container {
-  /* border: 2px solid red; */
+  border-top: 5px solid black;
   width: 100%;
   height: 20%;
   margin: 0 auto;
@@ -187,10 +187,18 @@ form {
   margin: 0 0 0 10px;
 }
 
+.image-info,
+.create-info,
+.data-info,
 .copyright {
   margin: 0 0 0 10px;
 }
- 
+
+.data-info,
+.image-info {
+  display: inline;
+}
+ /* SEARCH RESULTS STYLINGS */
 .search-results {
   width: 70%;
   height: 75%;
@@ -203,13 +211,9 @@ form {
   border: 2px solid black;
   background: white;
   overflow-y: scroll;
-  /* animation thing for when it pops up
-  displays over other stuff at the bottom */
 }
 .result-div {
   display: grid;
-  /* grid-template-columns: repeat(2 auto);
-  grid-template-rows: repeat(2 auto); */
   grid-template-areas:
   "img name"
   "img name";
@@ -241,8 +245,19 @@ form {
 }
 
 #submit {
-  /* margin: 5px; */
   display: none;
+}
+
+#rocket {
+  z-index: -2;
+  position: absolute;
+  max-height: 100%;
+  max-width: 50%;
+  left: 80%;
+  bottom: 5px;
+  /* background: black; */
+  /* border-radius: 10px; */
+  /* padding: 5px; */
 }
 
 /* MEDIA QUERYS FOR RESPONSIVENESS */
@@ -293,13 +308,28 @@ form {
     margin: 0px;
   }
   
-  .copyright {
+  .image-info,
+  .create-info,
+  .data-info {
     font-size: 10px;
+    margin: 0px;
+  }
+
+  .copyright {
+    font-size: 8px;
     margin: 0px;
   }
   .settings-div > button {
     font-size: 10px;
   }
+  /* #rocket {
+    z-index: -2;
+    position: absolute;
+    max-height: 100%;
+    max-width: 30%;
+    left: 75%;
+    bottom: 10px;
+  } */
 }
 
 @media (max-height: 700px) {
