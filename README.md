@@ -132,9 +132,9 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 | Section Removal | H | 3hrs| 3hrs | 0hrs |
 | Fussing with API | M | 4hrs| 2hrs | 0hrs |
 | Local Storage keeps selected items| M | 3hrs| 4hrs | 0hrs |
-| Incorporate Past Launches into searches | L | 3hrs | 0hrs | 0hrs|
+| Incorporate Events | L | 3hrs | 3hrs | 0hrs|
 | Check function | M | 3hrs | 3hrs | 0hrs|
-| Total | H | 39hrs| 44hrs | 0hrs |
+| Total | H | 39hrs| 47hrs | 0hrs |
 
 ## Code Snippet
 
