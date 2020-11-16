@@ -5,6 +5,7 @@ let upcomingLaunchesURL = 'https://ll.thespacedevs.com/2.0.0/launch/upcoming/ '
 // let searchUpcoming = `https://ll.thespacedevs.com/2.0.0/launch/upcoming?search=${searchQuery}`
 const thisStorage = window.localStorage
 const access_token = config.access_token
+const nasaAccessKey = config.nasa_token
 const searchBar = document.querySelector('#search-bar')
 const searchForm = document.querySelector('form')
 const counterContainer = document.querySelector('.counter-container')
@@ -71,18 +72,23 @@ async function get5launches() {
 
 function displayLaunches(arr) {
   arr.forEach((item, id) => {
-    let counterDiv = document.createElement('div')
-    counterDiv.className = 'counter'
-    counterDiv.id = item.id
-    counterDiv.style.backgroundImage = `url('${item.image}')`
-    counterDiv.innerHTML = `<div class='background-div'><h1 class='countdown' id='${item.datetime}'>COUNTER GOES HERE</h1><h3 class='name'>${item.name}</h3><button class='remove'>X</button><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<br><a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'></div>`
-    counterContainer.append(counterDiv)
-    let itemID = item.id
-    let clock = counterDiv.querySelector('.countdown')
-    intervalArr[id] = new intervalObj(itemID, (setInterval(() => { clock.textContent = countdown(clock.id) }, 1000)))
-    let removeButton = counterDiv.querySelector('.remove')
-    removeButton.addEventListener('click', (e) => removeDiv(counterDiv, itemID, e))
-    counterDiv.addEventListener('click', (e) => showDetails(itemID, e))
+    // if(checkForDupes(item) === false) {
+      checkForDupes(item)
+      let counterDiv = document.createElement('div')
+      counterDiv.className = 'counter'
+      counterDiv.id = item.id
+      counterDiv.style.backgroundImage = `url('${item.image}')`
+      counterDiv.innerHTML = `<div class='background-div'><h1 class='countdown' id='${item.datetime}'>T- XXX D : XX H : XX M : XX S</h1><h3 class='name'>${item.name}</h3><button class='remove'>X</button><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<br><a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'></div>`
+      counterContainer.append(counterDiv)
+      let itemID = item.id
+      let clock = counterDiv.querySelector('.countdown')
+      intervalArr[id] = new intervalObj(itemID, (setInterval(() => { clock.textContent = countdown(clock.id) }, 1000)))
+      let removeButton = counterDiv.querySelector('.remove')
+      removeButton.addEventListener('click', (e) => removeDiv(counterDiv, itemID, e))
+      counterDiv.addEventListener('click', (e) => showDetails(itemID, e))
+    // } else {
+    //   return
+    // }
   })
   console.log(intervalArr)
 }
@@ -102,7 +108,7 @@ function showDetails(itemID, e) {
 }
 
 getFiveButton.addEventListener('click', () => {
-  if (fiveLaunches.length === 6) {
+  if (fiveLaunches.length === 5) {
     return
   } else {
     get5launches()
@@ -132,6 +138,7 @@ function removeAll() {
   fiveLaunches = []
   intervalArr.forEach((item) => { clearInterval(item.num) })
   intervalArr = []
+  searchedLaunches = []
 }
 clearButton.addEventListener('click', removeAll)
 
@@ -139,6 +146,7 @@ function removeDiv(div, id, e) {
   e.stopPropagation()
   div.remove() 
   fiveLaunches = fiveLaunches.filter((item) => { return item.id !== id })
+  searchedLaunches = searchedLaunches.filter((item) => { return item.id !== id })
 }
 
 //SAVE SELECTED (displayed) FUNCTION
@@ -154,6 +162,7 @@ function saveLocal() {
     let item = JSON.stringify(saveThisArray[i])
     thisStorage.setItem(`savedLaunch ${i}`, item)
   }
+  saveThisArray = []
   console.log(thisStorage)
 }
 saveButton.addEventListener('click', () => { saveLocal() })
@@ -161,8 +170,34 @@ saveButton.addEventListener('click', () => { saveLocal() })
 //RETRIEVE FUNCTION 
 //use JSON.parse on the items in Storage
 
+function retrieveLocal() {
+  for (let i = 0; i < thisStorage.length; i++) {
+    let item = JSON.parse(thisStorage[i])
+    saveThisArray.push(item)
+  }
+  displayLaunches(saveThisArray)
+}
+
 //CHECK FUNCTION
 //checks to see if items in an array are already displayed in the DOM
+
+function checkForDupes(item) {
+  let alreadyDisplayed = document.querySelectorAll('.counter')
+  // console.log(alreadyDisplayed)
+  alreadyDisplayed.forEach((element) => {
+    console.log(item.id)
+    console.log(element.id)
+    if (element.id === item.id) {
+      console.log('They Matched!')
+      return true
+    } else {
+      console.log('They Didn"t Match!')
+      return false
+    }
+  })
+}
+  // console.log(alreadyDisplayed)
+  // console.log(item)
 
 //SEARCH FUNCTION
 //search display function
@@ -200,16 +235,35 @@ searchForm.addEventListener('submit', (event) => {
 })
 
 function addLaunch(launch) {
-  
   searchResults.style.display = 'none'
   while (searchResults.lastChild) {
     searchResults.removeChild(searchResults.lastChild)
   }
-  //check if searched launches includes the launch to be added
-  //if it does, don't display it
-  searchedLaunches.push(launch)
-  searchedLaunches.filter()
-  displayLaunches(searchedLaunches)
-  //displays selected launches in the dom
-  //clears search box
+  if (checkForDupes(launch) === true) {
+    console.log('woop?')
+    return
+  } else {
+    console.log('huh?')
+    searchedLaunches.push(launch)
+    displayLaunches(searchedLaunches)
+  }
 }
+
+//BACKGROUND DISPLAY FUNCTION
+//displays a different background everyday using APOD from NASA
+
+async function changeBackground() {
+  let nasaURL = `https://api.nasa.gov/planetary/apod?api_key=${nasaAccessKey}`
+  try {
+    let response = await axios.get(nasaURL)
+    let newBackground = response.data.url
+    counterContainer.style.background = `url('${newBackground}')`
+    counterContainer.style.backgroundPosition = 'center center'
+    counterContainer.style.backgroundRepeat = 'no-repeat'
+    counterContainer.style.backgroundSize = 'cover'
+    console.log(response)
+  } catch (error) {
+    console.log(error)
+  }
+}
+changeBackground()
