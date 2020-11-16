@@ -107,7 +107,7 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 |Nov 10| Project Approval and Initial Design - Basic HTML and CSS | Complete
 |Nov 12| Begin JS - Pull data functions  | Complete
 |Nov 13| More JS - take user input and populate data, create countdowns | Complete
-|Nov 16| Finishing touches, Probably CSS fixing, and PMVPs | Incomplete
+|Nov 16| Finishing touches, Probably CSS fixing, and PMVPs | Complete
 |Nov 17| Presentations | Incomplete
 
 ## Priority Matrix
@@ -130,10 +130,11 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 | DOM Manipulating JS | H | 3hrs| 4hrs | 0hrs |
 | Photos into styling| L | 1hr | 2hrs | 0 hrs|
 | Section Removal | H | 3hrs| 3hrs | 0hrs |
-| Fussing with API | M | 4hrs| 1hrs | 0hrs |
-| Local Storage keeps selected items| M | 3hrs| 2hrs | 0hrs |
+| Fussing with API | M | 4hrs| 2hrs | 0hrs |
+| Local Storage keeps selected items| M | 3hrs| 4hrs | 0hrs |
 | Incorporate Past Launches into searches | L | 3hrs | 0hrs | 0hrs|
-| Total | H | 39hrs| 0hrs | 0hrs |
+| Check function | M | 3hrs | 3hrs | 0hrs|
+| Total | H | 39hrs| 44hrs | 0hrs |
 
 ## Code Snippet
 
