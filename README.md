@@ -141,8 +141,25 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 Use this section to include a brief code snippet of functionality that you are proud of and a brief description.  
 
 ```
-function reverse(string) {
-	// here is the code to reverse a string of text
+function displayLaunches(arr) {
+  arr.forEach((item, id) => {
+    if (checkForDupes(item)) {
+      return
+    } else {
+      let counterDiv = document.createElement('div')
+      counterDiv.className = 'counter'
+      counterDiv.id = item.id
+      counterDiv.style.backgroundImage = `url('${item.image}')`
+      counterDiv.innerHTML = `<div class='background-div'><h1 class='countdown' id='${item.datetime}'>T- XXX D : XX H : XX M : XX S</h1><h3 class='name'>${item.name}</h3><button class='remove'>X</button><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<br><a class='more-details' href='https://www.google.com/search?q=${item.name}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'></div>`
+      counterContainer.append(counterDiv)
+      let itemID = item.id
+      let clock = counterDiv.querySelector('.countdown')
+      intervalArr[id] = new intervalObj(itemID, (setInterval(() => { clock.textContent = countdown(clock.id) }, 1000)))
+      let removeButton = counterDiv.querySelector('.remove')
+      removeButton.addEventListener('click', (e) => removeDiv(counterDiv, itemID, e))
+      counterDiv.addEventListener('click', (e) => showDetails(itemID, e))
+    }
+  })
 }
 ```
 
