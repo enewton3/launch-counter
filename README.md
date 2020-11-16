@@ -92,7 +92,7 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 
 #### PostMVP  
 
-- Ability to save launches using local storage, so that you can save the ones you're watching 
+- Ability to save launches using local storage, so that you can save the ones you're watching ----tick----
 - Ability to remove launch countdowns and old sections disappear when launch is complete ----tick----
 - incorporating past launch search ----tick----
 - incorporating other parts of the launch library api like astronaut look up, space events, dockings, etc.

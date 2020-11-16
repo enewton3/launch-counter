@@ -18,7 +18,7 @@ const searchResults = document.querySelector('.search-results')
 let searchedLaunches = []
 let fiveLaunches = []
 let intervalArr = []
-const saveThisArray = []
+let saveThisArray = []
 
 
 class launch {
@@ -72,8 +72,10 @@ async function get5launches() {
 
 function displayLaunches(arr) {
   arr.forEach((item, id) => {
-    // if(checkForDupes(item) === false) {
-      checkForDupes(item)
+    if (checkForDupes(item)) {
+      console.log('This Item is already displayed')
+      return
+    } else {
       let counterDiv = document.createElement('div')
       counterDiv.className = 'counter'
       counterDiv.id = item.id
@@ -86,9 +88,7 @@ function displayLaunches(arr) {
       let removeButton = counterDiv.querySelector('.remove')
       removeButton.addEventListener('click', (e) => removeDiv(counterDiv, itemID, e))
       counterDiv.addEventListener('click', (e) => showDetails(itemID, e))
-    // } else {
-    //   return
-    // }
+    }
   })
   console.log(intervalArr)
 }
@@ -160,7 +160,7 @@ function saveLocal() {
   thisStorage.clear()
   for (let i = 0; i < saveThisArray.length; i++){
     let item = JSON.stringify(saveThisArray[i])
-    thisStorage.setItem(`savedLaunch ${i}`, item)
+    thisStorage.setItem(`${i}`, item)
   }
   saveThisArray = []
   console.log(thisStorage)
@@ -171,13 +171,16 @@ saveButton.addEventListener('click', () => { saveLocal() })
 //use JSON.parse on the items in Storage
 
 function retrieveLocal() {
+  console.log(thisStorage)
   for (let i = 0; i < thisStorage.length; i++) {
     let item = JSON.parse(thisStorage[i])
     saveThisArray.push(item)
   }
+  console.log(saveThisArray)
   displayLaunches(saveThisArray)
 }
-
+retrieveLocal()
+retrieveButton.addEventListener('click', () => retrieveLocal())
 //CHECK FUNCTION
 //checks to see if items in an array are already displayed in the DOM
 
@@ -214,11 +217,11 @@ async function search(searchQuery) {
       resultDiv.className = 'result-div'
       let launchID = item.id
       let launchName = item.name
-      let launchType = 'item.mission.type'
+      let launchType = item.mission.type
       let launchImage = item.image
       let launchURL = item.url
       let launchTime = item.net
-      let launchDetails = 'item.mission.description'
+      let launchDetails = item.mission.description
       let thisLaunch = new launch(launchID, launchName, launchType, launchImage, launchURL, launchDetails, launchTime)
       resultDiv.innerHTML = `<img src='${launchImage}' class='search-img'><p class='search-name'>${launchName}</p>`
       searchResults.appendChild(resultDiv)
@@ -239,15 +242,9 @@ function addLaunch(launch) {
   while (searchResults.lastChild) {
     searchResults.removeChild(searchResults.lastChild)
   }
-  if (checkForDupes(launch) === true) {
-    console.log('woop?')
-    return
-  } else {
-    console.log('huh?')
-    searchedLaunches.push(launch)
-    displayLaunches(searchedLaunches)
+  searchedLaunches.push(launch)
+  displayLaunches(searchedLaunches)
   }
-}
 
 //BACKGROUND DISPLAY FUNCTION
 //displays a different background everyday using APOD from NASA
@@ -261,7 +258,7 @@ async function changeBackground() {
     counterContainer.style.backgroundPosition = 'center center'
     counterContainer.style.backgroundRepeat = 'no-repeat'
     counterContainer.style.backgroundSize = 'cover'
-    console.log(response)
+    // console.log(response)
   } catch (error) {
     console.log(error)
   }
