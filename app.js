@@ -74,18 +74,15 @@ function displayLaunches(arr) {
     counterContainer.append(counterDiv)
     let itemID = item.id
     let clock = counterDiv.querySelector('.countdown')
-    // intervalArr[id] = setInterval(() => { clock.textContent = countdown(clock.id) }, 1000)
     intervalArr[id] = new intervalObj(itemID, (setInterval(() => { clock.textContent = countdown(clock.id) }, 1000)))
     let removeButton = counterDiv.querySelector('.remove')
     removeButton.addEventListener('click', (e) => removeDiv(counterDiv, itemID, e))
     counterDiv.addEventListener('click', (e) => showDetails(itemID, e))
   })
   console.log(intervalArr)
-  // [`i${id}`]
 }
 
 function showDetails(itemID, e) {
-  // e.stopPropagation()
   let targetDiv = document.querySelector(`#${itemID}`)
   let details = targetDiv.querySelector('.details')
   if (targetDiv.style.height === '30%') {
@@ -153,7 +150,6 @@ async function search(searchQuery) {
     let searchData = response.data.results
     console.log(searchData)
     searchResults.style.display = 'block'
-    // searchResults.style.height = '75%'
     searchData.forEach((item) => {
       let resultDiv = document.createElement('div')
       resultDiv.className = 'result-div'
@@ -167,7 +163,7 @@ async function search(searchQuery) {
       let thisLaunch = new launch(launchID, launchName, launchType, launchImage, launchURL, launchDetails, launchTime)
       resultDiv.innerHTML = `<img src='${launchImage}' class='search-img'><p class='search-name'>${launchName}</p>`
       searchResults.appendChild(resultDiv)
-      resultDiv.addEventListener('click', addLaunch)
+      resultDiv.addEventListener('click', () => { addLaunch(thisLaunch) })
       })
   } catch (error) {
     console.log(error)
@@ -179,8 +175,16 @@ searchForm.addEventListener('submit', (event) => {
   search(searchQuery)
 })
 
-function addLaunch() {
-  //adds launch to launches array
+function addLaunch(launch) {
+  
+  searchResults.style.display = 'none'
+  while (searchResults.lastChild) {
+    searchResults.removeChild(searchResults.lastChild)
+  }
+  //check if searched launches includes the launch to be added
+  searchedLaunches.push(launch)
+  searchedLaunches.filter()
+  displayLaunches(searchedLaunches)
   //displays selected launches in the dom
   //clears search box
 }
