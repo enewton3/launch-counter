@@ -9,6 +9,7 @@ const thisStorage = window.localStorage
 const access_token = config.access_token
 const nasaAccessKey = config.nasa_token
 
+//Selectors
 const searchBar = document.querySelector('#search-bar')
 const searchForm = document.querySelector('form')
 const counterContainer = document.querySelector('.counter-container')
@@ -19,6 +20,8 @@ const clearButton = document.querySelector('#clear')
 const eventButton = document.querySelector('#events')
 const searchContainer = document.querySelector('.search-container')
 const searchResults = document.querySelector('.search-results')
+
+//Empty arrays to be used later
 let searchedLaunches = []
 let fiveLaunches = []
 let intervalArr = []
@@ -116,14 +119,17 @@ function displayLaunches(arr) {
 function showDetails(itemID, e) {
   let targetDiv = document.querySelector(`#${itemID}`)
   let details = targetDiv.querySelector('.details')
+  let counterBackground = targetDiv.querySelector('.background-div')
   if (targetDiv.style.height === '30%') {
     targetDiv.style.height = '15%'
     details.style.display = 'none'
-    targetDiv.style.overflowY ='hidden'
+    targetDiv.style.overflowY = 'hidden'
+    counterBackground.style.overflowY = 'hidden'
   } else {
     targetDiv.style.height = '30%'
     details.style.display = 'block'
     targetDiv.style.overflowY = 'scroll'
+    counterBackground.style.overflowY = 'scroll'
   }
 }
 

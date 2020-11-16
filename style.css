@@ -81,7 +81,7 @@ form {
     "details details details details details details";
   transition: all .3s ease;
   align-items: center;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 .countdown {
   grid-area: countdown;
