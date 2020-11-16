@@ -49,15 +49,20 @@ form {
   overflow-y: hidden;
 }
 
-.countdown
-.name
-.time
-.type
-.date
-.dropdown-img
-.details
-.more-details {
+.countdown,
+.name,
+.time,
+.type,
+.date,
+.dropdown-img {
   pointer-events: none;
+}
+
+.name,
+.time,
+.type,
+.date {
+  font-weight: bold;
 }
 
 .background-div {
@@ -76,6 +81,7 @@ form {
     "details details details details details details";
   transition: all .3s ease;
   align-items: center;
+  overflow-y: scroll;
 }
 .countdown {
   grid-area: countdown;
@@ -186,7 +192,7 @@ form {
   height: 75%;
   z-index: 9;
   position: absolute;
-  left: 2px;
+  left: 5px;
   bottom: 2px;
   transition: all .3s ease;
   display: none;
@@ -227,17 +233,18 @@ form {
 #search-bar {
   margin: 5px;
   width: 100%;
+  text-align: center;
 }
 
 #submit {
-  margin: 5px;
+  /* margin: 5px; */
   display: none;
 }
 
 /* MEDIA QUERYS FOR RESPONSIVENESS */
 @media (max-width: 750px) {
   .counter {
-    width: 100%;
+    /* width: 100%; */
     margin: 5px 0 5px 0;
   }
   .background-div {
@@ -290,14 +297,14 @@ form {
   .settings-div > button {
     font-size: 10px;
   }
-  #search-bar {
-    margin: 0px 2px 0 2px;
-    text-align: center;
-  }
-  #submit {
+  /* #search-bar { */
+    /* margin: 0px 2px 0 2px; */
+    /* text-align: center;
+  } */
+  /* #submit {
     margin: 0;
     display: none;
-  }
+  } */
 }
 
 @media (max-height: 700px) {

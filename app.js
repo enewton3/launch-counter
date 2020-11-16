@@ -1,4 +1,4 @@
-console.log('Hello World')
+// console.log('Hello World')
 
 let upcomingLaunchesURL = 'https://ll.thespacedevs.com/2.0.0/launch/upcoming/ '
 // let searchQuery = ' '
@@ -51,7 +51,7 @@ async function get5launches() {
   fiveLaunches = []
   try {
     let response = await axios.get(upcomingLaunchesURL, headers)
-    console.log(response)
+    // console.log(response)
     let launchData = response.data.results
     for (let i = 0; i < 5; i++) {
       let launchID = launchData[i].id
@@ -73,14 +73,13 @@ async function get5launches() {
 function displayLaunches(arr) {
   arr.forEach((item, id) => {
     if (checkForDupes(item)) {
-      console.log('This Item is already displayed')
       return
     } else {
       let counterDiv = document.createElement('div')
       counterDiv.className = 'counter'
       counterDiv.id = item.id
       counterDiv.style.backgroundImage = `url('${item.image}')`
-      counterDiv.innerHTML = `<div class='background-div'><h1 class='countdown' id='${item.datetime}'>T- XXX D : XX H : XX M : XX S</h1><h3 class='name'>${item.name}</h3><button class='remove'>X</button><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<br><a class='more-details' href='${item.url}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'></div>`
+      counterDiv.innerHTML = `<div class='background-div'><h1 class='countdown' id='${item.datetime}'>T- XXX D : XX H : XX M : XX S</h1><h3 class='name'>${item.name}</h3><button class='remove'>X</button><p class='type'>${item.type}</p><p class='time'>${item.time}</p><p class='date'>${item.date}</p><p class='details'>${item.details}<br><a class='more-details' href='https://www.google.com/search?q=${item.name}'>Click here for more details</a></p><img class='dropdown-img' src='./assets/Hamburger_icon.png'></div>`
       counterContainer.append(counterDiv)
       let itemID = item.id
       let clock = counterDiv.querySelector('.countdown')
@@ -90,7 +89,7 @@ function displayLaunches(arr) {
       counterDiv.addEventListener('click', (e) => showDetails(itemID, e))
     }
   })
-  console.log(intervalArr)
+  // console.log(intervalArr)
 }
 
 function showDetails(itemID, e) {
@@ -108,11 +107,11 @@ function showDetails(itemID, e) {
 }
 
 getFiveButton.addEventListener('click', () => {
-  if (fiveLaunches.length === 5) {
-    return
-  } else {
+  // if (fiveLaunches.length === 5) {
+  //   return
+  // } else {
     get5launches()
-  }
+  // }
 })
 
 //COUNTDOWN FUNCTION
@@ -163,7 +162,7 @@ function saveLocal() {
     thisStorage.setItem(`${i}`, item)
   }
   saveThisArray = []
-  console.log(thisStorage)
+  // console.log(thisStorage)
 }
 saveButton.addEventListener('click', () => { saveLocal() })
 
@@ -171,12 +170,12 @@ saveButton.addEventListener('click', () => { saveLocal() })
 //use JSON.parse on the items in Storage
 
 function retrieveLocal() {
-  console.log(thisStorage)
+  // console.log(thisStorage)
   for (let i = 0; i < thisStorage.length; i++) {
     let item = JSON.parse(thisStorage[i])
     saveThisArray.push(item)
   }
-  console.log(saveThisArray)
+  // console.log(saveThisArray)
   displayLaunches(saveThisArray)
 }
 retrieveLocal()
@@ -186,21 +185,16 @@ retrieveButton.addEventListener('click', () => retrieveLocal())
 
 function checkForDupes(item) {
   let alreadyDisplayed = document.querySelectorAll('.counter')
-  // console.log(alreadyDisplayed)
-  alreadyDisplayed.forEach((element) => {
-    console.log(item.id)
-    console.log(element.id)
-    if (element.id === item.id) {
-      console.log('They Matched!')
-      return true
-    } else {
-      console.log('They Didn"t Match!')
-      return false
-    }
-  })
+  let alreadyDisplayedIDs = []
+  for (let i = 0; i < alreadyDisplayed.length; i++) {
+    alreadyDisplayedIDs.push(alreadyDisplayed[i].id)
+  }
+  if (alreadyDisplayedIDs.includes(item.id)) {
+    return true
+  } else {
+    return false
+  }
 }
-  // console.log(alreadyDisplayed)
-  // console.log(item)
 
 //SEARCH FUNCTION
 //search display function
@@ -210,18 +204,18 @@ async function search(searchQuery) {
   try {
     let response = await axios.get(searchUpcoming, headers)
     let searchData = response.data.results
-    console.log(searchData)
+    // console.log(searchData)
     searchResults.style.display = 'block'
     searchData.forEach((item) => {
       let resultDiv = document.createElement('div')
       resultDiv.className = 'result-div'
       let launchID = item.id
       let launchName = item.name
-      let launchType = item.mission.type
+      let launchType = item.mission ? item.mission.type : 'Check back later for details'
       let launchImage = item.image
       let launchURL = item.url
       let launchTime = item.net
-      let launchDetails = item.mission.description
+      let launchDetails = item.mission ? item.mission.description : 'Check back later for more details'
       let thisLaunch = new launch(launchID, launchName, launchType, launchImage, launchURL, launchDetails, launchTime)
       resultDiv.innerHTML = `<img src='${launchImage}' class='search-img'><p class='search-name'>${launchName}</p>`
       searchResults.appendChild(resultDiv)
@@ -264,3 +258,6 @@ async function changeBackground() {
   }
 }
 changeBackground()
+
+//ask Corey - can you look at my if statements for check function?
+//getting null in a api call - cannot access that data, display null instead??
