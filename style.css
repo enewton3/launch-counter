@@ -161,6 +161,7 @@ form {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  overflow-y: scroll;
   /* border: 2px solid black; */
 }
 
@@ -244,7 +245,6 @@ form {
 /* MEDIA QUERYS FOR RESPONSIVENESS */
 @media (max-width: 750px) {
   .counter {
-    /* width: 100%; */
     margin: 5px 0 5px 0;
   }
   .background-div {
@@ -297,25 +297,9 @@ form {
   .settings-div > button {
     font-size: 10px;
   }
-  /* #search-bar { */
-    /* margin: 0px 2px 0 2px; */
-    /* text-align: center;
-  } */
-  /* #submit {
-    margin: 0;
-    display: none;
-  } */
 }
 
 @media (max-height: 700px) {
-  /* .date,
-  .time,
-  .type, 
-  .details {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-  } */
-
   .dropdown-img {
     display: none;
   }

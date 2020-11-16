@@ -1,11 +1,14 @@
 // console.log('Hello World')
 
+//URLs
 let upcomingLaunchesURL = 'https://ll.thespacedevs.com/2.0.0/launch/upcoming/ '
-// let searchQuery = ' '
-// let searchUpcoming = `https://ll.thespacedevs.com/2.0.0/launch/upcoming?search=${searchQuery}`
+let upcomingEventsURL = 'https://ll.thespacedevs.com/2.0.0/event/upcoming/'
+
+//access tokens and local storage
 const thisStorage = window.localStorage
 const access_token = config.access_token
 const nasaAccessKey = config.nasa_token
+
 const searchBar = document.querySelector('#search-bar')
 const searchForm = document.querySelector('form')
 const counterContainer = document.querySelector('.counter-container')
@@ -13,12 +16,14 @@ const saveButton = document.querySelector('#save')
 const retrieveButton = document.querySelector('#retrieve')
 const getFiveButton = document.querySelector('#next')
 const clearButton = document.querySelector('#clear')
+const eventButton = document.querySelector('#events')
 const searchContainer = document.querySelector('.search-container')
 const searchResults = document.querySelector('.search-results')
 let searchedLaunches = []
 let fiveLaunches = []
 let intervalArr = []
 let saveThisArray = []
+let fiveEvents = []
 
 
 class launch {
@@ -35,6 +40,23 @@ class launch {
   }
 }
 
+class eventObj {
+  constructor(id, name, type, image, url, details, time, launch, launchID, expedition) {
+    this.id = `A${id}`
+    this.name = name
+    this.type = type
+    this.image = image
+    this.url = url
+    this.details = details
+    this.time = `${time.slice(10, 19)} GMT`
+    this.date = time.slice(0, 10)
+    this.datetime = time
+    this.launch = launch
+    this.launchID = launchID
+    this.expedition = expedition
+  }
+}
+
 class intervalObj {
   constructor(id, num) {
     this.id = id
@@ -46,12 +68,11 @@ const headers = {
     'Authorization': `token ${access_token}`,
     },
 }
-  
+
 async function get5launches() {
   fiveLaunches = []
   try {
     let response = await axios.get(upcomingLaunchesURL, headers)
-    // console.log(response)
     let launchData = response.data.results
     for (let i = 0; i < 5; i++) {
       let launchID = launchData[i].id
@@ -69,6 +90,7 @@ async function get5launches() {
     console.log(error)
   }
 }
+getFiveButton.addEventListener('click', () => { get5launches() })
 
 function displayLaunches(arr) {
   arr.forEach((item, id) => {
@@ -89,7 +111,6 @@ function displayLaunches(arr) {
       counterDiv.addEventListener('click', (e) => showDetails(itemID, e))
     }
   })
-  // console.log(intervalArr)
 }
 
 function showDetails(itemID, e) {
@@ -105,14 +126,6 @@ function showDetails(itemID, e) {
     targetDiv.style.overflowY = 'scroll'
   }
 }
-
-getFiveButton.addEventListener('click', () => {
-  // if (fiveLaunches.length === 5) {
-  //   return
-  // } else {
-    get5launches()
-  // }
-})
 
 //COUNTDOWN FUNCTION
 //takes a datetime string, converts to Date object, subtracts to find time left, returns string
@@ -154,15 +167,16 @@ function removeDiv(div, id, e) {
 function saveLocal() {
   fiveLaunches.forEach((item) => { saveThisArray.push(item) })
   searchedLaunches.forEach((item) => { saveThisArray.push(item) })
+  fiveEvents.forEach((item) => { saveThisArray.push(item) })
   fiveLaunches = []
   searchedLaunches = []
+  fiveEvents = []
   thisStorage.clear()
   for (let i = 0; i < saveThisArray.length; i++){
     let item = JSON.stringify(saveThisArray[i])
     thisStorage.setItem(`${i}`, item)
   }
   saveThisArray = []
-  // console.log(thisStorage)
 }
 saveButton.addEventListener('click', () => { saveLocal() })
 
@@ -170,16 +184,15 @@ saveButton.addEventListener('click', () => { saveLocal() })
 //use JSON.parse on the items in Storage
 
 function retrieveLocal() {
-  // console.log(thisStorage)
   for (let i = 0; i < thisStorage.length; i++) {
     let item = JSON.parse(thisStorage[i])
     saveThisArray.push(item)
   }
-  // console.log(saveThisArray)
   displayLaunches(saveThisArray)
 }
 retrieveLocal()
 retrieveButton.addEventListener('click', () => retrieveLocal())
+
 //CHECK FUNCTION
 //checks to see if items in an array are already displayed in the DOM
 
@@ -204,7 +217,6 @@ async function search(searchQuery) {
   try {
     let response = await axios.get(searchUpcoming, headers)
     let searchData = response.data.results
-    // console.log(searchData)
     searchResults.style.display = 'block'
     searchData.forEach((item) => {
       let resultDiv = document.createElement('div')
@@ -259,5 +271,30 @@ async function changeBackground() {
 }
 changeBackground()
 
-//ask Corey - can you look at my if statements for check function?
-//getting null in a api call - cannot access that data, display null instead??
+async function getFiveEvents() {
+  fiveEvents = []
+  try {
+    let response = await axios.get(upcomingEventsURL, headers)
+    let eventsData = response.data.results
+    console.log(eventsData)
+    for (let i = 0; i < 5; i++) {
+      let eventID = eventsData[i].id
+      let eventName = eventsData[i].name
+      let eventType = eventsData[i].type.name
+      let eventImage = eventsData[i].feature_image
+      let eventURL = eventsData[i].url
+      let eventTime = eventsData[i].date
+      let eventDetails = eventsData[i].description
+      let relatedLaunchName = eventsData[i].launches.name
+      let relatedLaunchID = eventsData[i].launches.id
+      let relatedExpedition = eventsData[i].expeditions.name
+      let thisEvent = new eventObj(eventID, eventName, eventType, eventImage, eventURL, eventDetails, eventTime, relatedLaunchName, relatedLaunchID, relatedExpedition)
+      fiveEvents.push(thisEvent)
+
+    }
+    displayLaunches(fiveEvents)
+  } catch (error) {
+    console.log(error)
+  }
+}
+eventButton.addEventListener('click', () => { getFiveEvents() })
