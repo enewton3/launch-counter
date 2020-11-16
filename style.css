@@ -79,14 +79,15 @@ form {
 }
 .countdown {
   grid-area: countdown;
-  margin: 10px;
+  margin: 5px 10px 0 10px;
   text-shadow: 1px 1px grey;
+  justify-self: start;
 }
 .name {
   grid-area: name;
-  justify-self: end;
+  justify-self: start;
   text-align: right;
-  margin: 10px;
+  margin: 5px 5px 0 5px;
 }
 .remove {
   grid-area: remove;
