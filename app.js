@@ -161,6 +161,9 @@ saveButton.addEventListener('click', () => { saveLocal() })
 //RETRIEVE FUNCTION 
 //use JSON.parse on the items in Storage
 
+//CHECK FUNCTION
+//checks to see if items in an array are already displayed in the DOM
+
 //SEARCH FUNCTION
 //search display function
   //when the search bar is clicked to search for something, a window pops up on the bottom of the screen displaying the search results
