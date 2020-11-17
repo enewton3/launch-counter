@@ -74,7 +74,7 @@ const headers = {
     },
 }
 
-//API Call for upcoming launches
+//API Call for 5 upcoming launches
 async function get5launches() {
   fiveLaunches = []
   try {
@@ -280,7 +280,6 @@ async function changeBackground() {
     counterContainer.style.backgroundPosition = 'center center'
     counterContainer.style.backgroundRepeat = 'no-repeat'
     counterContainer.style.backgroundSize = 'cover'
-    // console.log(response)
   } catch (error) {
     console.log(error)
   }
@@ -308,7 +307,6 @@ async function getFiveEvents() {
       let relatedExpedition = eventsData[i].expeditions.name
       let thisEvent = new eventObj(eventID, eventName, eventType, eventImage, eventURL, eventDetails, eventTime, relatedLaunchName, relatedLaunchID, relatedExpedition)
       fiveEvents.push(thisEvent)
-
     }
     displayLaunches(fiveEvents)
   } catch (error) {

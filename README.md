@@ -119,22 +119,22 @@ https://ll.thespacedevs.com/2.0.0/launch/upcoming (add ?search=[searchquery])
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | Pitch, Wireframes, Priority Matrix| H | 2hrs | 2hrs | 2hrs| 
-| HTML | H | 2hrs| 1hrs | 0hrs |
-| CSS Styling | H | 3hrs| 4hrs | 0hrs |
-| Make CSS responsive | H | 3hrs| 3hrs | 0hrs |
-| Psuedocode | M | 1hr | 1.5hrs | 0hrs |
-| Search functionality - user input (Does this list next 5 launches by default?) | M | 3hrs | 3hrs | 0hrs |
-| Search DOM manipulation | H | 4hrs| 4hrs | 0hrs |
-| JS Pull Data Functions | H | 4hrs| 5.5hrs | 0hrs |
-| Countdown JS functions | H | 2hrs| 3hrs | 0hrs |
-| DOM Manipulating JS | H | 3hrs| 4hrs | 0hrs |
-| Photos into styling| L | 1hr | 2hrs | 0 hrs|
-| Section Removal | H | 3hrs| 3hrs | 0hrs |
-| Fussing with API | M | 4hrs| 2hrs | 0hrs |
-| Local Storage keeps selected items| M | 3hrs| 4hrs | 0hrs |
-| Incorporate Events | L | 3hrs | 3hrs | 0hrs|
-| Check function | M | 3hrs | 3hrs | 0hrs|
-| Total | H | 39hrs| 47hrs | 0hrs |
+| HTML | H | 2hrs| 2hrs | 2hrs |
+| CSS Styling | H | 3hrs| 4hrs | 4hrs |
+| Make CSS responsive | H | 3hrs| 3hrs | 3hrs |
+| Psuedocode | M | 1hr | 1.5hrs | 1.5hrs |
+| Search functionality - user input (Does this list next 5 launches by default?) | M | 3hrs | 3hrs | 3hrs |
+| Search DOM manipulation | H | 4hrs| 4hrs | 4hrs |
+| JS Pull Data Functions | H | 4hrs| 5.5hrs | 5.5hrs |
+| Countdown JS functions | H | 2hrs| 3hrs | 3hrs |
+| DOM Manipulating JS | H | 3hrs| 4hrs | 4hrs |
+| Photos into styling| L | 1hr | 2hrs | 2hrs|
+| Section Removal | H | 3hrs| 3hrs | 3hrs |
+| Fussing with API | M | 4hrs| 2hrs | 2hrs |
+| Local Storage keeps selected items| M | 3hrs| 4hrs | 4hrs |
+| Incorporate Events | L | 3hrs | 3hrs | 3hrs|
+| Check function | M | 3hrs | 3hrs | 3hrs|
+| Total | H | 39hrs| 49hrs | 49hrs |
 
 ## Code Snippet
 
