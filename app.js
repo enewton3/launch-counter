@@ -198,15 +198,19 @@ saveButton.addEventListener('click', () => { saveLocal() })
 //RETRIEVE FUNCTION 
 //use JSON.parse on the items in Storage
 
-function retrieveLocal() {
+function retrieveLocal(boolean) {
   for (let i = 0; i < thisStorage.length; i++) {
     let item = JSON.parse(thisStorage[i])
     saveThisArray.push(item)
   }
   displayLaunches(saveThisArray)
-  thisStorage.clear()
+  if (boolean) {
+    return
+  } else {
+    thisStorage.clear()
+  }
 }
-retrieveLocal()
+retrieveLocal(true)
 retrieveButton.addEventListener('click', () => retrieveLocal())
 
 //CHECK FUNCTION
