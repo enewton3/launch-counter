@@ -292,7 +292,7 @@ async function getFiveEvents() {
   try {
     let response = await axios.get(upcomingEventsURL, headers)
     let eventsData = response.data.results
-    console.log(eventsData)
+    // console.log(eventsData)
     for (let i = 0; i < 5; i++) {
       let eventID = eventsData[i].id
       let eventName = eventsData[i].name
