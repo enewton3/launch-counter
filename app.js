@@ -204,6 +204,7 @@ function retrieveLocal() {
     saveThisArray.push(item)
   }
   displayLaunches(saveThisArray)
+  thisStorage.clear()
 }
 retrieveLocal()
 retrieveButton.addEventListener('click', () => retrieveLocal())
