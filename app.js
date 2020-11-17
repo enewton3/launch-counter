@@ -5,8 +5,8 @@ let upcomingEventsURL = 'https://ll.thespacedevs.com/2.0.0/event/upcoming/'
 
 //access tokens and local storage
 const thisStorage = window.localStorage
-const access_token = process.env.LAUNCH_KEY
-const nasaAccessKey = process.env.NASA_KEY
+const access_token = config.access_token
+const nasaAccessKey = config.nasa_token
 
 //Selectors
 const searchBar = document.querySelector('#search-bar')
