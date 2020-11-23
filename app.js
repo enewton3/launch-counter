@@ -79,14 +79,15 @@ async function get5launches() {
   try {
     let response = await axios.get(upcomingLaunchesURL, headers)
     let launchData = response.data.results
+    console.log(response)
     for (let i = 0; i < 5; i++) {
       let launchID = launchData[i].id
       let launchName = launchData[i].name
-      let launchType = launchData[i].mission.type
+      let launchType = launchData[i].mission ? launchData[i].mission.type : 'Check back later for details'
       let launchImage = launchData[i].image
       let launchURL = launchData[i].url
       let launchTime = launchData[i].net
-      let launchDetails = launchData[i].mission.description
+      let launchDetails = launchData[i].mission ? launchData[i].mission.description : 'Check back later for details'
       let thisLaunch = new launch(launchID, launchName, launchType, launchImage, launchURL, launchDetails, launchTime)
       fiveLaunches.push(thisLaunch)
     }
